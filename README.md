@@ -104,8 +104,11 @@
 ## Лабораторная работа №6
 
 Создание интерфейсов к СУБД средствами php
+
 **(Часть1)[https://drive.google.com/open?id=1enuC4-0xi-VdYBqhYyTJXI1CVvqTGHfu]**
+
 **(Часть2)[https://drive.google.com/open?id=1enuC4-0xi-VdYBqhYyTJXI1CVvqTGHfu]**
+
 
 ### Сдача работы №6
 
