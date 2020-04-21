@@ -55,7 +55,7 @@
 
 ## Лабораторная работа №3
 
-Лабораторная работа и практическая задания выполнются в DBprom. Текст работы (тут)[https://drive.google.com/open?id=0B7AOfG5ohMyAU1Iydl9kN1VRVW84eThHd19sd3E5cjFlcEc4].
+Лабораторная работа и практическая задания выполнются в DBprom. Текст работы [тут](https://drive.google.com/open?id=0B7AOfG5ohMyAU1Iydl9kN1VRVW84eThHd19sd3E5cjFlcEc4).
 
 #### Лабораторная часть
 
@@ -105,9 +105,9 @@
 
 Создание интерфейсов к СУБД средствами php
 
-**(Часть1)[https://drive.google.com/open?id=1enuC4-0xi-VdYBqhYyTJXI1CVvqTGHfu]**
+**[Часть1](https://drive.google.com/open?id=1enuC4-0xi-VdYBqhYyTJXI1CVvqTGHfu)**
 
-**(Часть2)[https://drive.google.com/open?id=1enuC4-0xi-VdYBqhYyTJXI1CVvqTGHfu]**
+**[Часть2](https://drive.google.com/open?id=1enuC4-0xi-VdYBqhYyTJXI1CVvqTGHfu)**
 
 
 ### Сдача работы №6
