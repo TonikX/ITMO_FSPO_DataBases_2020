@@ -108,7 +108,7 @@
 
 **[Часть1](https://drive.google.com/open?id=1enuC4-0xi-VdYBqhYyTJXI1CVvqTGHfu)**
 
-**[Часть2](https://drive.google.com/open?id=1enuC4-0xi-VdYBqhYyTJXI1CVvqTGHfu)**
+**[Часть2](https://drive.google.com/open?id=1qw1D7WwH8JKzDKOaFatyiAaUbsMTmB_w)**
 
 
 ### Сдача работы №6
