@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+  <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Добавление</title>
+<body style="color:#E6E6FA; background-color:#191970">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <style>
+<link rel="stylesheet" href="http://htmlbook.ru/mysite.css">
+</style>
+<script src="jquery-1.7.2.min.js"></script>
+<script src="jquery.placeholder.min.js"></script>
+</head>
+  <body>
+    <h2>Работа в таблице Summary</h2>
+    <ul>
+     <form action="select.php" method="POST" >
+        <input type="text" name="id_summary" maxlength="128" placeholder="Ввести ID_Summary">
+	<input type="text" name="desiredposition" maxlength="128" placeholder="Ввести desired position">
+        <input type="text" name="education"  maxlength="128" placeholder="Ввести education">
+	<input type="text" name="id_jobseeker" maxlength="128" placeholder="Ввести id_jobseeker">
+	<input type="text" name="desiredsalary" maxlength="128" placeholder="Ввести desired salary">
+	<li>Action:</li>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button class="btn btn-outline-secondary" name="action" value="add"/>add</button>
+    <button class="btn btn-outline-secondary" name="action" value="delete"/>delete</button>
+    <button class="btn btn-outline-secondary" name="action" value="edit"/>edit</button>
+  </div>
+ </div>
+	 </form>
+   </ul>
+  </body>
+</html>
+
+

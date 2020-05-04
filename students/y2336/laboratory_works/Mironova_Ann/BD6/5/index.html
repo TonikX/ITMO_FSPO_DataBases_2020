@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+  <head>
+<meta charset="utf-8">
+<title>Показать работодателей, у которых отзывы соответсвуют заданным и объединить их с их вакансиями, у которых рабочая занятость равна заданной</title>
+<body style="color:Red; background-color:#66cc66">
+</head>
+  <body>
+    <h2>Показать работодателей, у которых отзывы соответсвуют заданным и объединить их с их вакансиями, у которых рабочая занятость равна заданной</h2>
+    <ul>
+     <form name="select" action="select.php" method="POST" >
+	 <li>Reviews:</li>
+	 <select name="Reviews" >
+    <option selected value="good">Good</option>
+    <option value="bad">Bad</option>
+    </select>
+	 <li>Condition vacancies:</li>
+	 <select  name="ConditionVacancies" >
+    <option selected value="full time work">Full time work</option>
+    <option value="part time">Part time</option>
+    </select>
+	 <input type="submit"  value="Поиск">
+	 </form>
+   </ul>
+  </body>
+</html>
+
+
