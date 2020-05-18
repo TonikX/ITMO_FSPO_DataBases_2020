@@ -33,47 +33,47 @@
    </body>
 </html>
 <?php 
+ini_set('display_errors','Off');
+@$arg1 = @$_POST['ID_Book'];
+@$arg2 = @$_POST['Author_Book'];
+@$arg3 = @$_POST['Name_Book'];
+@$arg4 = @$_POST['Pages_Book'];
+@$arg5 = @$_POST['Pictures_Book'];
+@$arg6 = @$_POST['action'];
+@$select = @$_POST['select'];
 
-$arg1 = $_POST['ID_Book'];
-$arg2 = $_POST['Author_Book'];
-$arg3 = $_POST['Name_Book'];
-$arg4 = $_POST['Pages_Book'];
-$arg5 = $_POST['Pictures_Book'];
-$arg6 = $_POST['action'];
-$select = $_POST['select'];
 
-
-echo("row was ".$arg6. "<br/>");
+echo("row was ".@$arg6. "<br/>");
 
 $dbuser = 'danzolax';
 $dbpass = '161200';
 $host = 'localhost';
 $dbname='zolax';
-$pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
+@$pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
 if($arg6 == "add"){
-	$pdo->query("INSERT INTO public.\"Book\" VALUES ('$arg1', '$arg2','$arg3','$arg4','$arg5')");
+	@$pdo->query("INSERT INTO public.\"Book\" VALUES ('$arg1', '$arg2','$arg3','$arg4','$arg5')");
 }elseif($arg6 == "delete"){
-	$pdo->query("delete from public.\"Book\" where \"ID_Book\" = '$arg1'");
+	@$pdo->query("delete from public.\"Book\" where \"ID_Book\" = '$arg1'");
 }elseif($arg6 == "edit"){
-	$pdo->query("update public.\"Book\" set \"Author_Book\" = '$arg2',
+	@$pdo->query("update public.\"Book\" set \"Author_Book\" = '$arg2',
  \"Name_Book\" = '$arg3',
  \"Pages_Book\" = '$arg4',
  \"Pictures_Book\" = '$arg5'
   where \"ID_Book\" = '$arg1'");
 }elseif($arg6 == "select"){
-	$data1 = $pdo->query($select);
+	@$data1 = @$pdo->query(@$select);
 }
 $data = $pdo->query('SELECT * FROM public."Book"');
 echo("Books: <br/>");
 foreach($data as $row){
-	echo " ID: ".$row['ID_Book']. " ";	
-	echo " Author: ".$row['Author_Book']. " ";
-	echo " Name: ".$row['Name_Book']. " ";
-	echo " Pages: ".$row['Pages_Book']. " ";
-	echo " Pictures: ".$row['Pictures_Book']. "<br/>";
+	echo " ID: ".@$row['ID_Book']. " ";	
+	echo " Author: ".@$row['Author_Book']. " ";
+	echo " Name: ".@$row['Name_Book']. " ";
+	echo " Pages: ".@$row['Pages_Book']. " ";
+	echo " Pictures: ".@$row['Pictures_Book']. "<br/>";
 }
 
 echo("Select: <br/>");
-$data2 = $data1->fetchAll();
-print_r($data2);
+@$data2 = @$data1->fetchAll();
+print_r(@$data2);
 ?>

@@ -29,6 +29,7 @@
    </body>
 </html>
 <?php 
+ini_set('display_errors','Off');
 $arg1 = $_POST['ID_manager'];
 $arg2 = $_POST['FIO_manager'];
 $arg3 = $_POST['Stage_manager'];

@@ -27,6 +27,7 @@
    </body>
 </html>
 <?php 
+ini_set('display_errors','Off');
 $arg1 = $_POST['ID_author'];
 $arg2 = $_POST['FIO_auuthor'];
 $arg3 = $_POST['action'];
