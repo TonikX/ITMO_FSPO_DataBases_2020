@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Insert data to PostgreSQL with php - creating a simple web application</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h2> Работа в таблице Order </h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <input type="number" name="Order_id" placeholder="Ввести ID Заказа">
+        <input name="ID_client" placeholder="Ввести ID Клиента">
+        <select name="Order_Status">
+          <option value="" disabled selected>Выберите Статус Заказа</option>
+          <option value="waiting">waiting</option>
+          <option value="pause">pause</option>
+          <option value="over">over</option>
+        </select>
+        <input name="workloadd" placeholder="Ввести срок выполнения">
+        <select name="Name_of_advertising_services">
+          <option value="" disabled selected>Ввести услугу</option>
+          <option value="banner creation">banner creation</option>
+          <option value="video creation">video creation</option>
+        </select>
+        <input name="order_conditions" placeholder="Ввести требования к заказу">
+        <input name="order terms" placeholder="Ввести условия заказа">
+        <input type="number" name="Phone_number_executor" placeholder="Ввести номер исполнителя">
+        <input type="number" name="finished_materials" placeholder="Ввести ID готовых материалов">
+        <input type="number" name="ID_Executor" placeholder="Ввести ID исполнителя">
+        <input type="number" name="ID_invoice_payment" placeholder="Ввести ID счёта оплаты">
+        <input type="number" name="ID_material" placeholder="Ввести ID материала">
+        <input type="number" name="cost" placeholder="Ввести цену">
+        <div>Действия:</div>
+        <div>
+          <button class="button" name="action" value="add">add</button>
+          <button class="button" name="action" value="delete">delete</button>
+          <button class="button" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+
+</html>
