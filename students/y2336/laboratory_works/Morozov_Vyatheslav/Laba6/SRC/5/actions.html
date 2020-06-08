@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+  <title>Insert data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="assets/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Работа в таблице Classroom</h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <div class="zag_1">Ввести ID кабинета</div>
+        <input name="id_class"  class="pole_1">
+
+        <div class="zag_1">Выберите кабинет</div>
+        <select name="number_class" class="pole_1">
+          <option selected value="101">101</option>
+          <option value="102">102</option>
+          <option value="103">103</option>
+          <option value="104">104</option>
+          <option value="201">201</option>
+          <option value="202">202</option>
+          <option value="313">313</option>
+        </select>
+
+        <div class="zag_1">Выберите учителя</div>
+        <select name="teacher_id" class="pole_1">
+          <option selected value="1">Tanya Ivanova</option>
+          <option value="2">Ivan Ivanov</option>
+          <option value="3">Danya Konev</option>
+          <option value="4">Ann Postre</option>
+          <option value="5">John Sieno</option>
+          <option value="6">Dean Iden</option>
+        </select>
+
+        <div class="zag_1">Действия:</div>
+        <div>
+          <button class="button" name="action" value="add">add</button>
+          <button class="button" name="action" value="delete">delete</button>
+          <button class="button" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+</html>
