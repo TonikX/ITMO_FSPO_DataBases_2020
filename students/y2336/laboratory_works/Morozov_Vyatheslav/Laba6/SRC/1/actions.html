@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+  <title>Insert data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="assets/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Работа в таблице Group</h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <div class="zag_1">Ввести ID группы</div>
+        <div class="pole_1"><input type="number" name="id_group"></div>
+        <div class="zag_1">Ввести номер группы</div>
+        <div class="pole_1"><input name="number_group" value="Y"></div>
+        
+        <div class="zag_1">Действия:</div>
+        <div>
+          <button class="button" name="action" value="add">add</button>
+          <button class="button" name="action" value="delete">delete</button>
+          <button class="button" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+  <title>Insert data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="assets/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Работа в таблице Grade</h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <div class="zag_1">Ввести ID оценки</div>
+        <input name="id"  class="pole_1">
+
+        <div class="zag_1">Выберите предмет</div>
+        <select name="subject_id" class="pole_1">
+          <option selected value="1">Math</option>
+          <option value="2">Programming</option>
+          <option value="3">History</option>
+          <option value="4">Engilsh</option>
+        </select>
+
+        <div class="zag_1">Выберите ученика</div>
+        <select name="student_id" class="pole_1">
+          <option selected value="1">Alex McLaden</option>
+          <option value="2">Mirron Gorelov</option>
+          <option value="3">Nuta Hedov</option>
+          <option value="4">Tolik Marik</option>
+          <option value="5">Pasha Sharik</option>
+          <option value="6">Masha Sasha</option>
+          <option value="7">Gosha Merin</option>
+          <option value="8">Albert Gaev</option>
+        </select>
+
+        <div class="zag_1">Выберите оценку</div>
+        <select name="grade" class="pole_1">
+          <option selected value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+        </select>
+
+        <div class="zag_1">Выберите дату</div>
+        <input type="date" name="date" value="2020-06-06" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"  class="pole_1">
+
+        <div class="zag_1">Действия:</div>
+        <div>
+          <button class="button" name="action" value="add">add</button>
+          <button class="button" name="action" value="delete">delete</button>
+          <button class="button" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+</html>
