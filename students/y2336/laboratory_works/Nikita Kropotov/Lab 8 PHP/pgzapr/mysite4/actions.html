@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Insert data to PostgreSQL with php - creating a simple web application</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h2> Работа в таблице Payment </h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <input type="number" name="ID_invoice_payment" placeholder="Ввести ID Счёта">
+        <select name="payment_State">
+          <option value="" disabled selected>Выберите Статус Заказа</option>
+          <option value="paid">waiting</option>
+          <option value="pause">pause</option>
+        </select>
+        <input type="text" name="Payment_price" placeholder="Ввести цену">
+        <input type="text" name="Payment_time" placeholder="Ввести время оплаты">
+        <div>Действия:</div>
+        <div>
+          <button class="button" name="action" value="add">add</button>
+          <button class="button" name="action" value="delete">delete</button>
+          <button class="button" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+
+</html>

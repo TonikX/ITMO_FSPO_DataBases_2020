@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Insert data to PostgreSQL with php - creating a simple web application</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h2> Работа в таблице Material </h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <input type="number" name="ID_material" placeholder="Ввести ID Материала">
+        <select name="type_material">
+          <option value="" disabled selected>Выберите Тип Материала</option>
+          <option value="banner">banner</option>
+          <option value="video">video</option>
+        </select>
+        <input type="text" name="name_material" placeholder="Ввести Название Материала">
+        <input type="text" name="date_create_material" placeholder="Ввести дату создания">
+        <input type="text" name="Name_developer" placeholder="Ввести ФИО разработчика">
+        <input type="number" name="price_material" placeholder="Ввести цену">
+        <div>Действия:</div>
+        <div>
+          <button class="button" name="action" value="add">add</button>
+          <button class="button" name="action" value="delete">delete</button>
+          <button class="button" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+
+</html>

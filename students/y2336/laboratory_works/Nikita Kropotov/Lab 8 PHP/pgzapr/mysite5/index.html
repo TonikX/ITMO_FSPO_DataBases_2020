@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+   <head>
+<title>Insert data to PostgreSQL with php - creating a simple web application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="assets/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+   </head>
+   <body>
+    <div class="container">
+<h2> Выберите ID материала</h2>
+
+<ul>
+  <form name="select" action="insert.php" method="POST" >
+
+<div class="zag_1">ID material</div>
+	<select name="ID_material" class="pole_1">
+    <option selected value="57394">57394</option>
+    <option value="9483">9483</option>
+    <option value="3174">3174</option>
+    <option value="43824">43824</option>
+    <option value="32423">32423</option>
+  </select>
+  <div class="zag_1">
+<p><input type="submit" class="button"/></p>
+  </form>
+  <p class="zag_1"><a href="actions.html" class="zag_1">Действия с таблицей</a></p>
+</ul>
+</div>
+</body>
+<!-- $db, "SELECT 'Order_Status', 'Order_id' FROM order_zakaz WHERE 'Order_Status' = ('.$_POST[Order_Status].') UNION SELECT 'Order_Status', 'Order_id' FROM order_zakaz WHERE 'Name_of_advertising_services' = '.$_POST[Name_of_advertising_services].'" -->
+</html>
