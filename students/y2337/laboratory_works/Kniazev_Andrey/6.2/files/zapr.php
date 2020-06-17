@@ -13,14 +13,14 @@
 $host = 'localhost';
 $dbname = 'postgres';
 $dbuser = 'postgres';
-$dbpass = '1234';
+$dbpass = '123';
 
 $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
 
 function table($sql, $pdo)
 {
-	$book = $pdo->query($sql);
-	$result = $book->fetchAll(PDO::FETCH_ASSOC);
+	$ch = $pdo->query($sql);
+	$result = $ch->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($result as $line) {
 		echo "<tr>";
 		foreach ($line as $col_value) {
@@ -31,19 +31,19 @@ function table($sql, $pdo)
 	echo "</table><br>";
 }
 
-echo '1. Вывод Id породы, id курицы и содержание диеты';
+echo 'Вывод Id породы, id курицы и содержание диеты';
 $sql = 'select "Id_породы","Id_курица","Содержание_диеты" from public."Курица",public."Диета" where "Курица"."Номер_диеты" = "Диета"."Номер_диеты" group by "Диета"."Номер_диеты", "Курица"."Id_курица"';
-echo "<table><tr><td>Id_породы</td><td>Id_курица</td><td>Содержание_диеты</td>";
+echo "<table><tr><td>Id_породы</td><td>Id_курица</td><td>Содержание_диеты</td></tr></table>";
 table($sql, $pdo);
 
-echo '2. Вывести все данные из таблицы Book, где id_книги>1 или id_редактора=2';
-$sql = 'select * from public."Book" where ("id_book">1 or "id_ed"=2)';
-echo "<table><tr><td>Id_book</td><td>Id_ed</td><td>id_au</td><td>id_cus</td><td>id_con</td><td>id_cm</td><td>Тираж</td><td>Дата выпуска</td><td>Название</td>";
+echo 'Вывод максимальный номер диеты';
+$sql = 'Select distinct max("Номер_диеты") from public."Диета"';
+echo "<table><tr><td>Номер_диеты</td></tr></table>";
 table($sql, $pdo);
 
 echo '3. Вывести разницу в днях выпуска книги';
-$sql = 'select current_date - "Дата-выпуска" as "Разница_в_днях",current_date,"Дата-выпуска" from public."Book"';
-echo "<table><tr><td>Разница_в_днях</td><td>Сегодняшняя дата</td><td>Дата выпуска</td>";
+$sql = 'select "Зарплата","Id_Работника" from public."Работники" where "Зарплата" >= 2500;';
+echo "<table><tr><td>Зарплата</td><td>Id_Работника</td>";
 table($sql, $pdo);
 
 ?>
