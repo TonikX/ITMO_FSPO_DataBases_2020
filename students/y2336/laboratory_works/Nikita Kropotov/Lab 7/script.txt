@@ -1,0 +1,55 @@
+Получить всех клиентов:
+db.client.find()
+Вывод:
+{ "_id" : ObjectId("5ee3a829b367b64fa969eb36"), "client_id" : 65823, "contact_client" : { "person" : "Itzan Escamilla", "client_phone" : "648472", "client_mail" : "itzan@gmail.com" }, "contact_executor" : { "executor_phone" : "423412", "executor_mail" : "connerwalton@gmail.com" } }
+{ "_id" : ObjectId("5ee3a8aeb367b64fa969eb37"), "client_id" : 31345, "contact_client" : { "person" : "Miguel Bernardeau", "client_phone" : "31345", "client_mail" : "miguel@gmail.com" }, "contact_executor" : { "executor_phone" : "429884", "executor_mail" : "jeffreymason@gmail.com" } }
+{ "_id" : ObjectId("5ee3a903b367b64fa969eb38"), "client_id" : 44627, "contact_client" : { "person" : "Aron Piper", "client_phone" : "424985", "client_mail" : "aron@gmail.com" }, "contact_executor" : { "executor_phone" : "463745", "executor_mail" : "marahaney@gmail.com" } }
+{ "_id" : ObjectId("5ee3a973b367b64fa969eb39"), "client_id" : 12345, "contact_client" : { "person" : "Omar Ayuso", "client_phone" : "539866", "client_mail" : "omar@gmail.com" }, "contact_executor" : { "executor_phone" : "864395", "executor_mail" : "dominikadyer@gmail.com" } }
+{ "_id" : ObjectId("5ee3ae40b367b64fa969eb3e"), "client_id" : 90624, "contact_client" : { "person" : "Ester Exposito", "client_phone" : "243567", "client_mail" : "ester@gmail.com" }, "contact_executor" : { "executor_phone" : "968445", "executor_mail" : "taylermccarthny@gmail.com" } }
+{ "_id" : ObjectId("5ee3aebeb367b64fa969eb3f"), "client_id" : 318405, "contact_client" : { "person" : "Danna Paola", "client_phone" : "450386", "client_mail" : "danna@gmail.com" }, "contact_executor" : { "executor_phone" : "768356", "executor_mail" : "brontekim@gmail.com" } }
+
+Вывести все агентства и сгруппировать их по названию:
+db.agency.aggregate([{$group:{_id:{source:"$agency_id",status: "$name_agency"}, count:{$sum:1}}},{$sort:{"_id.status": 1}}])
+Вывод:
+{ "_id" : { "source" : 789, "status" : "NAS" }, "count" : 1 }
+{ "_id" : { "source" : 123, "status" : "SAD" }, "count" : 2 }
+{ "_id" : { "source" : 456, "status" : "WES" }, "count" : 3 }
+
+Вывести клиента с номером 65823:
+db.client.find({client_id: 65823})
+Вывод:
+{ "_id" : ObjectId("5ee3a829b367b64fa969eb36"), "client_id" : 65823, "contact_client" : { "person" : "Itzan Escamilla", "client_phone" : "648472", "client_mail" : "itzan@gmail.com" }, "contact_executor" : { "executor_phone" : "423412", "executor_mail" : "connerwalton@gmail.com" } }
+
+Вывести ID платёжного счёта оплаченного «2019-02-13»:
+db.payment.find({pay_time: new Date("February 13, 2019")},{_id:0})
+Вывод:
+{ "payment_id" : 756, "payment_state" : "paid", "paument_price" : 1000, "pay_time" : ISODate("2019-02-12T21:00:00Z") }
+
+Вывести заказ использующий материал с ID_material = 9483:
+db.order.find({material_id: 9483},{order_id:1, material_id:1, _id:0})
+Вывод:
+{ "order_id" : 30, "material_id" : 9483 }
+
+Вывести ID заказа, ID материала:
+db.order.aggregate([{$lookup: { from: "material", localField: "materi-al_id", foreignField: "material_id", as: "material_name"}},{$project: {order_id: 1, material_id:1, price_material:1, _id:0}}, {$sort: {price_material: 1}}])
+Вывод:
+{ "order_id" : 30, "material_id" : 9483 }
+{ "order_id" : 40, "material_id" : 3174 }
+{ "order_id" : 50, "material_id" : 43824 }
+{ "order_id" : 60, "material_id" : 32423 }
+{ "order_id" : 20, "material_id" : 57394 }
+
+
+Вывести ID заказов максимальная цена которых больше 1000:
+db.order.find({"cost" : {$gte: 1000}}, {order_id: 1, cost:1, _id:0})
+Вывод:
+{ "order_id" : 30, "cost" : 1000 }
+{ "order_id" : 40, "cost" : 1200 }
+{ "order_id" : 60, "cost" : 1100 }
+
+Вывести ID материала с типом «видео» И ценой больше 210:
+db.material.find({'material_info.type_material': 'video', price_material: {$gt: 210}})
+Вывод:
+{ "_id" : ObjectId("5ee3b2ecb367b64fa969eb47"), "material_id" : 9483, "material_info" : { "type_material" : "video", "date_create_material" : ISODate("2019-08-06T21:00:00Z"), "developer" : "Rayn Kelly" }, "price_material" : 300 }
+{ "_id" : ObjectId("5ee3b32fb367b64fa969eb48"), "material_id" : 31486, "material_info" : { "type_material" : "video", "date_create_material" : ISODate("2020-06-06T21:00:00Z"), "developer" : "Nikita Kropotov" }, "price_material" : 500 }
+{ "_id" : ObjectId("5ee3b383b367b64fa969eb49"), "material_id" : 43824, "material_info" : { "type_material" : "video", "date_create_material" : ISODate("2019-12-22T21:00:00Z"), "developer" : "Sidney Forster" }, "price_material" : 230 }
