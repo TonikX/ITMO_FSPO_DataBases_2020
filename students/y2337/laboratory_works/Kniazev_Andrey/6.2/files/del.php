@@ -21,7 +21,7 @@
 	$host = 'localhost';
 	$dbname = 'postgres';
 	$dbuser = 'postgres';
-	$dbpass = '123';
+	$dbpass = '12345';
 	$pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
 	$sql = 'select * from public."Курица"';
 	echo "<table><tr><td>Id_курица</td><td>Id_клетки</td><td>Id_породы</td><td>Id_птицефабрики</td><td>Вес</td><td>Количество_яиц_ежемесячно</td><td>Номер_диеты</td>";

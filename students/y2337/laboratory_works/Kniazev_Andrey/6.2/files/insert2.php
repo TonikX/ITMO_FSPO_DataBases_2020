@@ -14,7 +14,7 @@
 $host = 'localhost';
 $dbname = 'postgres';
 $dbuser = 'postgres';
-$dbpass = '123';
+$dbpass = '12345';
 $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
 $id_chiken = $_POST['Id_курица'];
 $id_cage = $_POST['Id_клетки'];

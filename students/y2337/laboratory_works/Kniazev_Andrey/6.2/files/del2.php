@@ -13,7 +13,7 @@
 $host = 'localhost';
 $dbname = 'postgres';
 $dbuser = 'postgres';
-$dbpass = '123';
+$dbpass = '12345';
 $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
 $id = $_POST['id_курица'];
 $sql = "delete from public.\"Курица\" where \"Id_курица\"=$id";
