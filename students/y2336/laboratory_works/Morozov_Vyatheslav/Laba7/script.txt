@@ -1,0 +1,23 @@
+1 Урок в такой-то день на такой-то паре	у такой-то группы
+db.lessons.find({$and: [{lesson_number: 2}, {group: "Y2236"}, {weekday: "Monday"}]}).pretty()
+
+2 Вывести сколько студентов учится в группе Y2336
+db.students.count({group: "Y2336"})
+
+3 Вывести преподавателей, за которыми не закреплены кабинеты
+db.teachers.find({cabinet: {$exists: false}}).pretty()
+
+4 Вывести преподавателей, которые ведут 2 предмета
+db.teachers.find({subjects: {$size: 2}}).pretty()
+
+5 Вывести преподавателей, которые ведут математику или программирование
+db.teachers.find({subjects: {$in: ["Math", "Programming"]}}).pretty()
+
+6 Вывести преподавателя, за которым закреплен кабинет для программиирования	
+db.teachers.find({'cabinet.name': "Cabinet for programming"}).pretty()
+
+7 Вывести расписание для заданной группы
+db.lessons.find({$and: [{group: "Y2136"}, {weekday: "Monday"}]}).pretty()
+
+8 Посчитать количество пар История в неделю у группы Y2136
+db.lessons.count({$and: [{group: "Y2136"}, {subject: "History"}]})
