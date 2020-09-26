@@ -301,6 +301,42 @@ ALTER TABLE ONLY gostinitsa."Служащий"
     ADD CONSTRAINT "Служащий_pkey" PRIMARY KEY ("ФИО Служащего");
 
 
+
+ALTER TABLE ONLY gostinitsa."Договор найма"
+    ADD CONSTRAINT "ФИО Служащего_fkey" FOREIGN KEY ("ФИО Служащего") REFERENCES gostinitsa."Служащий"("ФИО Служащего");
+
+ALTER TABLE ONLY gostinitsa."Договор найма"
+    ADD CONSTRAINT "ФИО Админа_fkey" FOREIGN KEY ("ФИО Админа") REFERENCES gostinitsa."Админ гостиницы"("ФИО Админа");
+
+
+ALTER TABLE ONLY gostinitsa."Договор проживания"
+    ADD CONSTRAINT "ФИО Админа_fkey" FOREIGN KEY ("ФИО Админа") REFERENCES gostinitsa."Админ гостиницы"("ФИО Админа");
+
+ALTER TABLE ONLY gostinitsa."Договор проживания"
+    ADD CONSTRAINT "ФИО Проживающего_fkey" FOREIGN KEY ("ФИО Проживаюещго") REFERENCES gostinitsa."Проживающий"("ФИО Проживающего");
+
+ALTER TABLE ONLY gostinitsa."Договор проживания"
+    ADD CONSTRAINT "Номер_fkey" FOREIGN KEY ("Номер") REFERENCES gostinitsa."Номер"("Номер");
+
+
+ALTER TABLE ONLY gostinitsa."Расписание уборки"
+    ADD CONSTRAINT "ФИО Служащего_fkey" FOREIGN KEY ("ФИО Служащего") REFERENCES gostinitsa."Служащий"("ФИО Служащего");
+
+ALTER TABLE ONLY gostinitsa."Расписание уборки"
+    ADD CONSTRAINT "ФИО Админа_fkey" FOREIGN KEY ("ФИО Админа") REFERENCES gostinitsa."Админ гостиницы"("ФИО Админа");
+
+
+ALTER TABLE ONLY gostinitsa."Уборка"
+    ADD CONSTRAINT "Номер_fkey" FOREIGN KEY ("Номер") REFERENCES gostinitsa."Номер"("Номер");
+	
+ALTER TABLE ONLY gostinitsa."Уборка"
+    ADD CONSTRAINT "ФИО Служащего_fkey" FOREIGN KEY ("ФИО Служащего") REFERENCES gostinitsa."Служащий"("ФИО Служащего");
+
+ALTER TABLE ONLY gostinitsa."Уборка"
+    ADD CONSTRAINT "ФИО Админа_fkey" FOREIGN KEY ("ФИО Админа") REFERENCES gostinitsa."Админ гостиницы"("ФИО Админа");
+
+
+
 --
 -- PostgreSQL database dump complete
 --
