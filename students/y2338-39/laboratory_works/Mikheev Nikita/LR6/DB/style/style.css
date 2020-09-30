@@ -1,0 +1,162 @@
+#ShowTableBlock {
+	
+	width: 400px;
+	height: auto;
+	background:#e1e3e1;
+	border-radius: 30px 30px 30px 30px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:5%;
+	
+
+}
+#ShowTableBlock div {
+	
+	text-align:center;
+}
+#HeadTable{
+	
+	height: 40px;
+	weight: 100px;
+	background: #9ef09e;
+	border-radius: 30px 30px 0px 0px;
+	
+	
+}
+#FootTable{
+	height: 40px;
+	weight: 100px;
+	background: #9ef09e;
+	border-radius: 0px 0px 30px 30px;
+	
+}
+
+#ShowTableBlock div p {
+	
+	font-size:20pt;
+}
+#RowsOfTablediv table tr:first-child td{
+	
+	color: red;
+}
+#RowsOfTablediv table tr td{
+	
+	padding: 10px;
+}
+#RowsOfTablediv table tr td {
+	
+	text-align:center;
+	font-size: 15pt;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#AddFormdiv {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 180px;
+	margin-right:auto;
+	margin-left:auto;
+	
+}
+#AddFormdiv input {
+	
+	display:block;
+	width: 180px;
+	height: 30px;
+	margin-bottom:20px;
+	
+}
+#UpdateForm {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 180px;
+	margin-right:auto;
+	margin-left:auto;
+	
+}
+#UpdateForm input {
+	
+	display:block;
+	width: 180px;
+	height: 30px;
+	margin-bottom:20px;
+	
+}
+#Updatediv button {
+	
+	margin-bottom:15px;
+}
+#AddFormdiv button {
+	
+	margin-bottom:15px;
+}
+#RowsOfTablediv button {
+	
+	margin-bottom:15px;
+}
+#BackButton {
+	
+	float:left;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+
+#AddNewRow{
+ color:#979996;
+ padding: 10px 20px;
+ width:100px;
+ text-decoration:none;
+ text-align:center;
+ margin:20px auto;
+ display: block;
+ background-image: linear-gradient(to left,transparent,transparent 50%,#979996 50%,#979996);
+ background-position: 100% 0;
+ background-size: 200% 100%;
+ transition: all .25s ease-in;
+ font: 400 18px tahoma;
+ border: 1px solid #979996;
+}
+#AddNewRow:hover {
+background-position: 0 0;
+color:white;
+}
+#UpdateButton{
+ color:#979996;
+ padding: 10px 20px;
+ width:100px;
+ text-decoration:none;
+ text-align:center;
+ margin:20px auto;
+ display: block;
+ background-image: linear-gradient(to left,transparent,transparent 50%,#979996 50%,#979996);
+ background-position: 100% 0;
+ background-size: 200% 100%;
+ transition: all .25s ease-in;
+ font: 400 18px tahoma;
+ border: 1px solid #979996;
+}
+#UpdateButton:hover {
+background-position: 0 0;
+color:white;
+}
+
+
+#Submit{
+ color:#979996;
+ padding: 10px 20px;
+ width:100px;
+ text-decoration:none;
+ text-align:center;
+ margin:20px auto;
+ display: block;
+ background-image: linear-gradient(to left,transparent,transparent 50%,#979996 50%,#979996);
+ background-position: 100% 0;
+ background-size: 200% 100%;
+ transition: all .25s ease-in;
+ font: 400 18px tahoma;
+ border: 1px solid #979996;
+}
+#Submit:hover {
+background-position: 0 0;
+color:white; }
