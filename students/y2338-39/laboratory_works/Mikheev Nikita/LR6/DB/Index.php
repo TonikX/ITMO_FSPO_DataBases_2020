@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="style/style.css">
 <html>
  <head>
-  <title>JOPA</title>
+  <title>SITE</title>
   <meta charset="utf-8">
   
  </head>
