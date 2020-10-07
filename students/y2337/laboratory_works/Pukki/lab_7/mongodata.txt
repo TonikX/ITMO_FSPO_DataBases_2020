@@ -1,0 +1,32 @@
+Cabinets:
+db.cabinets.insert({_id: 103});
+db.cabinets.insert({_id: 210});
+db.cabinets.insert({_id: 213});
+
+Disciplines:
+db.disciplines.insert({_id: 1, name: 'Химия'});
+db.disciplines.insert({_id: 2, name: 'Математика'});
+db.disciplines.insert({_id: 3, name: 'История'});
+
+Groups:
+db.groups.insert({_id: 2337});
+db.groups.insert({_id: 2336});
+db.groups.insert({_id: 2335});
+
+Students:
+db.students.insert({_id: 1, name: 'Костя', surname: 'Пукки', Age: 19, gender: 'М', group: 2337});
+db.students.insert({_id: 2, name: 'Аня', surname: 'Петрова', Age: 18, gender: 'Ж', group: 2335});
+db.students.insert({_id: 3, name: 'Женя', surname: 'Антонов', Age: 20, gender: 'М', group: 2336});
+db.students.insert({_id: 4, name: 'Максим', surname: 'Воротынский', Age: 19, gender: 'М', group: 2337});
+
+Teacher:
+db.teachers.insert({_id: 1, name: 'Мария', surname: 'Павлова', age: 40, gender: 'Ж', cabinet: 103,schedule: [{discipline: 1, date: new Date(2020, 9, 10)}]});
+db.teachers.insert({_id: 2, name: 'Татьяна', surname: 'Проккиева', age: 50, gender: 'Ж', cabinet: 210, schedule: [{discipline: 3, date: new Date(2020, 9, 10)}, {discipline: 3, date: new Date(2020, 9, 11)}]});
+db.teachers.insert({_id: 3, name: 'Эдуард', surname: 'Ошурок', age: 39, gender: 'М', schedule: [{discipline: 1, date: new Date(2020, 9, 11)}, {discipline: 2, date: new Date(2020, 9, 11)}]});
+db.teachers.insert({_id: 4, name: 'Рината', surname: 'Николаева', age: 24, gender: 'Ж', schedule: [{discipline: 3, date: new Date(2020, 9, 11)}, {discipline: 2, date: new Date(2020, 9, 12)}]});
+
+Exam:
+db.exams.insert({_id: 1, teacher: 1, student: 1, discipline: 1, date: new Date(2020, 9, 20), score: 3});
+db.exams.insert({_id: 2, teacher: 1, student: 2, discipline: 1, date: new Date(2020, 9, 21), score: 4});
+db.exams.insert({_id: 3, teacher: 2, student: 1, discipline: 3, date: new Date(2020, 9, 21), score: 5});
+db.exams.insert({_id: 4, teacher: 3, student: 2, discipline: 3, date: new Date(2020, 9, 21), score: 3});
