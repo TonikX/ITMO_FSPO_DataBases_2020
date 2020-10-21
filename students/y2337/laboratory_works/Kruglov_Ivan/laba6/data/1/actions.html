@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<head>
+  <title>Insert data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="assets/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+    <style>
+      body {background: url(https://html5book.ru/wp-content/uploads/2015/07/background39.png);}
+      .button2 {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  line-height: 28px;
+  border-radius: 45px;
+  margin: 10px 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0,0,0,.1);
+  transition: .3s;
+}
+.button2:hover {
+  background: rgb(81, 227, 213);
+  box-shadow: 0 15px 20px rgb(55, 165, 154);
+  color: white;
+  transform: translateY(-7px);
+}
+    .h2{
+      font-size: 23px;
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 30;
+      margin-bottom: 10px;
+      padding-top: 0;
+      margin-left: 20px;
+  }
+  .ex3 h2:after {content: "";
+  position: absolute;
+  height: 22px;
+  width: 5px;
+  background:rgb(81, 227, 213);
+  top: 23px;
+  left: 2%;}
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="ex3"><h2 style="margin-left: 42px;">Работа в таблице Dog Passport</h2></div>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <div class="zag_1">Введите номер паспорта</div>
+        <div class="pole_1"><input type="number" name="Passport_Num"></div>
+
+        <div class="zag_1">Введите кличку</div>
+        <div class="pole_1"><input name="Klichka"></div>
+        
+        <div class="zag_1">Выберите пароду</div>
+        <select name="Poroda" class="pole_1">
+          <option value="Korgi">Korgi</option>
+          <option value="Labrador">Labrador</option>
+          <option value="Mops">Mops</option>
+          <option value="Husky">Husky</option>
+        </select>
+
+         <div class="zag_1">Введите возраст</div>
+        <div class="pole_1"><input name="Age"></div>
+
+        <div class="zag_1">Выберите класс</div>
+        <select name="Class" class="pole_1">
+          <option value="Elite">Elite</option>
+          <option value="First">First</option>
+          <option value="Second">Second</option>
+        </select>
+
+        <div class="zag_1">Введите клички родителей</div>
+        <div class="pole_1"><input name="Dad_Name" placeholder="Кличка Папы"></div>
+        <div class="pole_1"><input name="Mom_Name" placeholder="Кличка Мамы"></div>
+
+        <div class="zag_1">Введите дату вакцинации</div>
+        <input type="date" name="Graft_Date" value="2020-06-01" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"  class="pole_1">
+
+
+        <div class="zag_1" style="margin-top: 20px;">Действия:</div>
+        <div style="margin-top: 10px;" class="a">
+          <button class="button2" name="action" value="add">add</button>
+          <button class="button2" name="action" value="delete">delete</button>
+          <button class="button2" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+</html>

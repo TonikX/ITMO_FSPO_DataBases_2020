@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+   <head>
+<title>Select data to PostgreSQL with php</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="assets/style.css">
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+<style>
+  body {background: url(https://html5book.ru/wp-content/uploads/2015/07/background39.png);}
+  .h2{
+    font-size: 23px;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 30;
+    margin-bottom: 10px;
+    padding-top: 0;
+    margin-left: 20px;
+}
+.ex3 h2:after {content: "";
+position: absolute;
+height: 22px;
+width: 5px;
+background:rgb(81, 227, 213);
+top: 23px;
+left: 2%;}
+.button2 {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  width: 130px;
+  height: 30px;
+  line-height: 28px;
+  border-radius: 45px;
+  margin: 10px 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0,0,0,.1);
+  transition: .3s;
+}
+.button2:hover {
+  background: rgb(81, 227, 213);
+  box-shadow: 0 15px 20px rgb(55, 165, 154);
+  color: white;
+  transform: translateY(-7px);
+}
+</style>
+   </head>
+   <body>
+
+    <div class="container">
+    <div class="ex3"><h2 style="margin-left: 42px;">Введите возраст собаки</h2></div>
+  <form name="select" action="insert.php" method="POST" >
+    <div><input type="number" name="Age" class="pole_1" style="margin-left: 42px;"/></div>
+<p><input type="submit" class="button2" style="margin-left: 42px;"/></p>
+  </form>
+</ul>
+</div>
+
+</body>
+</html>

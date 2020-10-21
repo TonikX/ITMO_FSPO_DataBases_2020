@@ -1,0 +1,48 @@
+Вывести кличку и номер документа собак, чей возраст составляет более трех лет:
+db.dog_passport.find({"age": {$gt: 3}}, {_id: 0, passport_num: 1, klichka: 1})
+
+{ "passport_num" : 516997, "klichka" : "Lolly" }
+{ "passport_num" : 285664, "klichka" : "Wilford" }
+
+Вывести общую информацию о собаке и ее владельце для собак, состоящих в клубе ‘Darky Lurks’.
+db.dog.find({club_title: 'Darky Lurks'}, {_id: 0})
+
+{ "id_dog" : 4, "id_participant" : 3, "passport_num" : 516997, "club_title" : "Darky Lurks" }
+{ "id_dog" : 5, "id_participant" : 3, "passport_num" : 745123, "club_title" : "Darky Lurks" }
+
+Вывести паспортные данные и общую информацию о собаке и ее владельце для собак:
+db.dog.aggregate([{$lookup: {from: "dog_passport", localField: "passport_num", foreignField: "passport_num", as: "passport"}}, {$project:{_id:0}}])
+
+{ "id_dog" : 1, "id_participant" : 2, "passport_num" : 198510, "club_title" : "Strangers", "passport" : [ { "_id" : ObjectId("5ef89ef7f9dd80067c6e4d38"), "passport_num" : 198510, "klichka" : "Dafna", "poroda" : "Korgi", "age" : 3, "class" : "Elite", "parents" : { "dad" : "Mike", "mom" : "Nancy" }, "graft_date" : ISODate("1970-01-01T00:00:02Z") } ] }
+{ "id_dog" : 2, "id_participant" : 1, "passport_num" : 223456, "club_title" : "Strangers", "passport" : [ { "_id" : ObjectId("5ef89f6cf9dd80067c6e4d3a"), "passport_num" : 223456, "klichka" : "Martha", "poroda" : "Labrador", "age" : 2, "class" : "Second", "parents" : { "dad" : "Gorin", "mom" : "Kira" }, "graft_date" : ISODate("1970-01-01T00:00:02.007Z") } ] }
+{ "id_dog" : 3, "id_participant" : 2, "passport_num" : 285664, "club_title" : "Strangers", "passport" : [ { "_id" : ObjectId("5ef89fdff9dd80067c6e4d3c"), "passport_num" : 285664, "klichka" : "Wilford", "poroda" : "Husky", "age" : 4, "class" : "Elite", "parents" : { "dad" : "Jom", "mom" : "Kary" }, "graft_date" : ISODate("1970-01-01T00:00:01.997Z") } ] }
+{ "id_dog" : 4, "id_participant" : 3, "passport_num" : 516997, "club_title" : "Darky Lurks", "passport" : [ { "_id" : ObjectId("5ef89f3cf9dd80067c6e4d39"), "passport_num" : 516997, "klichka" : "Lolly", "poroda" : "Labrador", "age" : 4, "class" : "First", "parents" : { "dad" : "Chris", "mom" : "Julia" }, "graft_date" : ISODate("1970-01-01T00:00:02.004Z") } ] }
+{ "id_dog" : 5, "id_participant" : 3, "passport_num" : 745123, "club_title" : "Darky Lurks", "passport" : [ { "_id" : ObjectId("5ef89fa2f9dd80067c6e4d3b"), "passport_num" : 745123, "klichka" : "Ginger", "poroda" : "Mops", "age" : 3, "class" : "First", "parents" : { "dad" : "Charli", "mom" : "Polly" }, "graft_date" : ISODate("1970-01-01T00:00:01.990Z") } ] }
+
+Вывести все соревнования:
+ db.event.find({},{_id:0})
+
+{ "competition_num" : 1, "id_sponsor" : 3, "event_date" : ISODate("1970-01-01T00:00:01.993Z") }
+{ "competition_num" : 2, "id_sponsor" : 1, "event_date" : ISODate("1970-01-01T00:00:01.992Z") }
+{ "competition_num" : 3, "id_sponsor" : 4, "event_date" : ISODate("1970-01-01T00:00:01.994Z") }
+{ "competition_num" : 4, "id_sponsor" : 3, "event_date" : ISODate("1970-01-01T00:00:02.002Z") }
+{ "competition_num" : 5, "id_sponsor" : 5, "event_date" : ISODate("1970-01-01T00:00:01.989Z") }
+
+Вывести сумму всех инвестиций за соревнование:
+> db.sponsor.aggregate([{$group:{_id: 0, "total_investment": {$sum: "$total_investment"}}}])
+
+{ "_id" : 0, "total_investment" : 66010 }
+
+Вывести спонсора, инвестировавшего больше 10000:
+ db.sponsor.find({"total_investment": {$gt : 10000}},{_id:0})
+
+{ "id_sponsor" : 1, "total_investment" : 10200 }
+{ "id_sponsor" : 3, "total_investment" : 21630 }
+{ "id_sponsor" : 3, "total_investment" : 21630 }
+
+Вывести этапы, на которых участники получили меньше 5 баллов:
+db.estimation_process.find({points_amount: {$lt: 5}},{_id:0})
+
+{ "competition_num" : 2, "id_expert" : 2, "id_dog" : 2, "points_amount" : 4, "row_num" : 5 }
+{ "competition_num" : 3, "id_expert" : 3, "id_dog" : 4, "points_amount" : 3, "row_num" : 10 }
+{ "competition_num" : 5, "id_expert" : 4, "id_dog" : 2, "points_amount" : 4, "row_num" : 15 }
