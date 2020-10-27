@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Insert, delete, update data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .body {
+      margin: 0;
+      padding: 0;
+      color: #383d48;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .container {
+      margin: 50px auto;
+      padding: 0 20px;
+      width: 100%;
+      max-width: 768px;
+      text-align: center;
+    }
+
+    .container ul {
+      margin: 50px 0;
+      list-style: none;
+    }
+
+    h1,
+    h2 {
+      font-weight: 500;
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .zag_1 {
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .pole_1 {
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    input {
+      width: 270px;
+      height: 30px;
+      border: 1;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body style=" color: #383d48; font-family: 'Montserrat', sans-serif;">
+  <div class="container">
+    <h2 style="margin-left: 38px; text-align: center;">Таблица Firm</h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <div class="zag_1">Введите номер фирмы</div>
+        <div class="pole_1"><input type="number" name="Firm_Number"></div>
+
+        <div class="zag_1">Введите название</div>
+        <div class="pole_1"><input name="Name"></div>
+
+        <div class="zag_1">Введите страну</div>
+        <div class="pole_1"><input name="Country"></div>
+
+        <div class="zag_1" style="margin-top: 25px;">Действия</div>
+        <div style="margin-top: 10px;" class="example-1">
+          <button class="button-1" name="action" value="add">add</button>
+          <button class="button-1" name="action" value="delete">delete</button>
+          <button class="button-1" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+
+</html>
