@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Insert data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="assets/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+  <style>
+    body {
+      background: #1b2631;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 38px;
+      color: #f9e79f;
+      margin-top: 10px;
+
+    }
+
+    .zag_1 {
+      font-family: 'Montserrat', cursive;
+      font-size: 24px;
+      color: white;
+      margin-bottom: 2px;
+      margin-top: 2px;
+      padding: 0;
+    }
+
+
+    .pole_1 {
+      width: 300px;
+      height: 30px;
+      margin-left: 0;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .button2 {
+      text-decoration: none;
+      outline: none;
+      display: inline-block;
+      margin: 10px 20px;
+      padding: 10px 30px;
+      position: relative;
+      background-color: #1b2631;
+      border: 2px solid #f1c40f;
+      color: #f1c40f;
+      font-family: 'Montserrat', sans-serif;
+      transition: .4s;
+    }
+
+    .button2:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      border: 2px solid rgba(0, 0, 0, 0);
+      transition: .4s;
+    }
+
+    .button2:hover:after {
+      border-color: #f1c40f;
+      width: calc(100% - 10px);
+      height: calc(100% + 10px);
+    }
+
+    input {
+      text-align: center;
+    }
+
+    #pole_2 {
+      width: 200px;
+      height: 30px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Редактирование таблицы Estimation Process</h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+
+        <div class="zag_1">Введите ID испытания</div>
+        <input name="Row_Num" class="pole_1">
+
+        <div class="zag_1">Выбеирте этап соревнования</div>
+        <select name="Competition_Num" class="pole_1">
+          <option selected value="1">Первый этап</option>
+          <option value="2">Второй этап</option>
+          <option value="3">Третий этап</option>
+          <option value="4">Четвертый этап</option>
+          <option value="5">Пятый этап</option>
+        </select>
+
+        <div class="zag_1">Выбеирте эксперта</div>
+        <select name="ID_Expert" class="pole_1">
+          <option selected value="1">Наруто Узумаки</option>
+          <option value="2">Саске Учиха</option>
+          <option value="3">Морриарти</option>
+          <option value="4">Нельсон</option>
+          <option value="5">Майк Вазовский</option>
+        </select>
+
+        <div class="zag_1">Выбеирте собаку</div>
+        <select name="ID_Dog" class="pole_1">
+          <option selected value="1">Гав-Гав</option>
+          <option value="2">СмокиМо</option>
+          <option value="3">Догги</option>
+          <option value="4">Гарри Поттер</option>
+          <option value="5">Воин</option>
+        </select>
+
+        <div class="zag_1">Введите баллы</div>
+        <input name="Points_Amount" class="pole_1">
+
+        <div class="zag_1">Действия:</div>
+        <div>
+          <button class="button2" name="action" value="add">add</button>
+          <button class="button2" name="action" value="delete">delete</button>
+          <button class="button2" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+
+</html>
