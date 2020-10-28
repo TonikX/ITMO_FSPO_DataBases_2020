@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+  <title>Insert data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="assets/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+    <style>
+       body {background: url(https://html5book.ru/wp-content/uploads/2015/07/background39.png);}
+      .h2{
+        font-size: 23px;
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 30;
+        margin-bottom: 10px;
+        padding-top: 0;
+        margin-left: 20px;
+    }
+    .ex3 h2:after {content: "";
+    position: absolute;
+    height: 22px;
+    width: 5px;
+    background:rgb(81, 227, 213);
+    top: 23px;
+    left: 2%;}
+    .button2 {
+      text-decoration: none;
+      outline: none;
+      display: inline-block;
+      width: 100px;
+      height: 30px;
+      line-height: 28px;
+      border-radius: 45px;
+      margin: 10px 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 3px;
+      font-weight: 600;
+      color: #524f4e;
+      background: white;
+      box-shadow: 0 8px 15px rgba(0,0,0,.1);
+      transition: .3s;
+    }
+    .button2:hover {
+      background: rgb(81, 227, 213);
+      box-shadow: 0 15px 20px rgb(55, 165, 154);
+      color: white;
+      transform: translateY(-7px);
+    }
+    </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="ex3"><h2 style="margin-left: 42px;">Работа в таблице Estimation Process</h2></div>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+
+        <div class="zag_1">Введите ID испытания</div>
+        <input name="Row_Num"  class="pole_1">
+
+        <div class="zag_1">Выбеирте этап соревнования</div>
+        <select name="Competition_Num" class="pole_1">
+          <option selected value="1">Первый этап</option>
+          <option value="2">Второй этап</option>
+          <option value="3">Третий этап</option>
+          <option value="4">Четвертый этап</option>
+          <option value="5">Пятый этап</option>
+        </select>
+
+        <div class="zag_1">Выбеирте эксперта</div>
+        <select name="ID_Expert" class="pole_1">
+          <option selected value="1">Mike Vazovskiy</option>
+          <option value="2">Kirin Jindosh</option>
+          <option value="3">Lony Kerez</option>
+          <option value="4">Jonas Nielson</option>
+          <option value="5">Mike Dara</option>
+        </select>
+        
+        <div class="zag_1">Выбеирте собаку</div>
+        <select name="ID_Dog" class="pole_1">
+          <option selected value="1">1 Dafna</option>
+          <option value="2">2 Lolly</option>
+          <option value="3">3 Martha</option>
+          <option value="4">4 Ginger</option>
+          <option value="5">5 Wilford</option>
+        </select>
+
+        <div class="zag_1">Введите баллы</div>
+        <input name="Points_Amount"  class="pole_1">
+
+        <div class="zag_1">Действия:</div>
+        <div>
+          <button class="button2" name="action" value="add">add</button>
+          <button class="button2" name="action" value="delete">delete</button>
+          <button class="button2" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+</html>
