@@ -1,0 +1,42 @@
+li {list-style: none;}
+body {background-color: #FFEFCF!important}
+
+.header-h1 {
+  text-align: center;
+  margin-bottom: .4rem;
+}
+.container {
+  margin-top: 50px;
+  width: 27%!important;
+}
+
+.header-h1 {
+  background: #DC136C;
+  margin-bottom: 20;
+padding: 50px;
+font-size: 35px;
+text-transform:full-width;
+color: #fff;
+}
+form {
+  background: #885A5A;
+  border: 4px solid #DC136C;
+  border-radius: 10px;
+  padding: 18px 10px;
+}
+
+#pat {
+  width: 60%;
+  float:left;
+  margin-right: 5%;
+}
+#doc {
+  width: 60%;
+  float:left;
+  margin-right: 5%;
+}
+#cab {
+  width: 60%;
+  float:left;
+  margin-right: 5%;
+}
