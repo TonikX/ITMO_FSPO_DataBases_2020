@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Select data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="assets/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+  <style>
+    body {
+      background: #1b2631;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 38px;
+      color: #f9e79f;
+    }
+
+    .pole_1 {
+      width: 400px;
+      height: 40px;
+      margin-left: 0;
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .button2 {
+      text-decoration: none;
+      outline: none;
+      display: inline-block;
+      margin: 10px 20px;
+      padding: 10px 30px;
+      position: relative;
+      background-color: #1b2631;
+      border: 2px solid #f1c40f;
+      color: #f1c40f;
+      font-family: 'Montserrat', sans-serif;
+      transition: .4s;
+    }
+
+    .button2:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      border: 2px solid rgba(0, 0, 0, 0);
+      transition: .4s;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+      <h2>Вывести информацию о собаках состоящих в клубе:</h2>
+
+    <form name="select" action="insert.php" method="POST">
+      <select name="Club_Title" class="pole_1">
+        <option selected value="'Команда А'">Команда А</option>
+        <option value="'Даффи Дак'">Даффи Дак</option>
+      </select>
+      <div class="button1">
+        <button class="button2" name="submit">Отправить</button>
+      </div>
+    </form>
+    </ul>
+  </div>
+
+</body>
+
+</html>
