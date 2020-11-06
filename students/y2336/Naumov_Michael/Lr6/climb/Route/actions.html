@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Insert data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="../assets/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+  <style>
+    .zag_1 {
+      color: black;
+    }
+
+    .pole_1 {
+      color: black;
+    }
+  </style>
+</head>
+
+<body style="padding-left: 30px;">
+
+  <div class="container">
+    <h2>Редактирование таблицы Route</h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <div class="zag_1">Введите id маршрута </div>
+        <input name="id_route" id="pole_2">
+
+        <div class="zag_1">Введите описание</div>
+        <textarea name="description_route" id="pole_2"> </textarea> 
+
+        <div class="zag_1">Введите название маршрута</div>
+        <input name="name_route" id="pole_2" placeholder="{M}">
+
+        <div class="zag_1">Введите id веришины</div>
+        <input name="Id_peak" id="pole_2">
+
+        <div class="zag_1">Действия:</div>
+        <div>
+          <button class="button2" name="action" value="add">add</button>
+          <button class="button2" name="action" value="delete">delete</button>
+          <!-- <button class="button2" name="action" value="edit">edit</button> -->
+        </div>
+      </form>
+    </ul>
+
+</body>
+
+</html>
