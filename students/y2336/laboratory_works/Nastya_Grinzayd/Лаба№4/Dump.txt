@@ -1,0 +1,543 @@
+Microsoft Windows [Version 10.0.18362.657]
+(c) Корпорация Майкрософт (Microsoft Corporation), 2019. Все права защищены.
+
+C:\Users\Student> cd C:\Program Files\PostgreSQL\11\bin>
+Ошибка в синтаксисе команды.
+
+C:\Users\Student>cd C:\Program Files\PostgreSQL\11\bin>
+Ошибка в синтаксисе команды.
+
+C:\Users\Student>cd C:\Program Files\PostgreSQL\11\bin
+
+C:\Program Files\PostgreSQL\11\bin>pg_restore -h localhost -U postgres -F c -d Grinzopela c:\1\ngriin
+pg_restore: [внешний архиватор] не удалось открыть входной файл "c:\1\ngriin": No such file or directory
+
+C:\Program Files\PostgreSQL\11\bin>pg_dump -h localhost -U postgres -W Grinzopela c:\1\ngriin
+pg_dump: слишком много аргументов командной строки (первый: "c:\1\ngriin")
+Для дополнительной информации попробуйте "pg_dump --help".
+
+C:\Program Files\PostgreSQL\11\bin>pg_dump -U postgres -W Grinzopela c:\1\ngriin
+pg_dump: слишком много аргументов командной строки (первый: "c:\1\ngriin")
+Для дополнительной информации попробуйте "pg_dump --help".
+
+C:\Program Files\PostgreSQL\11\bin>pg_dump -U postgres -W Grinzopela
+Пароль:
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.2
+-- Dumped by pg_dump version 11.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: Cabinet; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Cabinet" (
+    number_of_cabinet integer NOT NULL,
+    id_teacher integer,
+    id_class integer,
+    cabinet_specialization text NOT NULL
+);
+
+
+ALTER TABLE public."Cabinet" OWNER TO postgres;
+
+--
+-- Name: Class; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Class" (
+    class_number integer NOT NULL,
+    id_teacher integer,
+    number_of_students integer
+);
+
+
+ALTER TABLE public."Class" OWNER TO postgres;
+
+--
+-- Name: Journal; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Journal" (
+    id_note integer NOT NULL,
+    id_student integer,
+    class_number integer,
+    id_teacher integer,
+    work_grade integer
+);
+
+
+ALTER TABLE public."Journal" OWNER TO postgres;
+
+--
+-- Name: Lesson; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Lesson" (
+    id_lesson integer NOT NULL,
+    id_teacher integer NOT NULL,
+    subject_name text NOT NULL,
+    number_of_cabinet integer NOT NULL,
+    id_timetable integer,
+    id_replacement integer,
+    id_note integer,
+    class_number integer,
+    time_start timestamp(4) without time zone,
+    whether_the_lesson text
+);
+
+
+ALTER TABLE public."Lesson" OWNER TO postgres;
+
+--
+-- Name: Replacement; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Replacement" (
+    id_replacement integer NOT NULL,
+    replacing_teacher integer NOT NULL,
+    sick_teacher integer NOT NULL
+);
+
+
+ALTER TABLE public."Replacement" OWNER TO postgres;
+
+--
+-- Name: Student; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Student" (
+    id_student integer NOT NULL,
+    class_number integer NOT NULL,
+    id_teacher integer NOT NULL,
+    gender text NOT NULL,
+    academic_performance integer
+);
+
+
+ALTER TABLE public."Student" OWNER TO postgres;
+
+--
+-- Name: Subject; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Subject" (
+    subject_name text NOT NULL,
+    id_teacher integer NOT NULL,
+    number_of_subjects integer
+);
+
+
+ALTER TABLE public."Subject" OWNER TO postgres;
+
+--
+-- Name: Teacher; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Teacher" (
+    id_teacher integer NOT NULL,
+    specialty text NOT NULL,
+    class_leadership text,
+    own_cabinet integer
+);
+
+
+ALTER TABLE public."Teacher" OWNER TO postgres;
+
+--
+-- Name: Timetable; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Timetable" (
+    number_of_cabinet integer,
+    id_teacher integer,
+    id_timetable integer NOT NULL,
+    day_of_the_week date NOT NULL,
+    lesson_number integer NOT NULL,
+    subject_name text NOT NULL
+);
+
+
+ALTER TABLE public."Timetable" OWNER TO postgres;
+
+--
+-- Data for Name: Cabinet; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Cabinet" (number_of_cabinet, id_teacher, id_class, cabinet_specialization) FROM stdin;
+123     2       \N      Russian
+124     2       \N      Literature
+125     4       \N      Biology
+126     5       2       Chemestry
+\.
+
+
+--
+-- Data for Name: Class; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Class" (class_number, id_teacher, number_of_students) FROM stdin;
+5       1       2
+6       3       2
+2       5       2
+\.
+
+
+--
+-- Data for Name: Journal; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Journal" (id_note, id_student, class_number, id_teacher, work_grade) FROM stdin;
+456     1       5       1       5
+457     2       5       1       4
+458     3       6       3       3
+459     4       6       3       5
+460     5       2       5       5
+461     6       2       5       3
+\.
+
+
+--
+-- Data for Name: Lesson; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Lesson" (id_lesson, id_teacher, subject_name, number_of_cabinet, id_timetable, id_replacement, id_note, class_number, time_start, whether_the_lesson) FROM stdin;
+991     2       Russian 123     445     657     \N      2       2020-01-08 09:00:00     Yes
+992     2       Literature      124     446     \N      \N      6       2020-01-09 10:00:00     Yes
+993     4       Biology 125     447     660     \N      5       2020-01-10 11:00:00     No
+995     1       Match   126     449     \N      456     5       2020-01-12 13:00:00     Yes
+996     3       English 124     500     \N      458     6       2020-01-13 14:00:00     Yes
+994     5       Chemistry       126     448     659     461     2       2020-01-11 12:00:00     No
+\.
+
+
+--
+-- Data for Name: Replacement; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Replacement" (id_replacement, replacing_teacher, sick_teacher) FROM stdin;
+656     2       1
+657     3       2
+658     2       3
+659     4       5
+660     5       4
+\.
+
+
+--
+-- Data for Name: Student; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Student" (id_student, class_number, id_teacher, gender, academic_performance) FROM stdin;
+1       5       1       male    10
+2       5       1       female  9
+3       6       3       male    8
+4       6       3       male    8
+5       2       5       female  7
+6       2       5       female  10
+\.
+
+
+--
+-- Data for Name: Subject; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Subject" (subject_name, id_teacher, number_of_subjects) FROM stdin;
+English 3       2
+Russian 2       3
+Literature      2       4
+Match   1       5
+Chemistry       5       2
+Biology 4       1
+\.
+
+
+--
+-- Data for Name: Teacher; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Teacher" (id_teacher, specialty, class_leadership, own_cabinet) FROM stdin;
+1       math    yes     0
+2       russian/literature      no      1
+3       english yes     0
+4       biology no      1
+5       chemestry       yes     1
+\.
+
+
+--
+-- Data for Name: Timetable; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Timetable" (number_of_cabinet, id_teacher, id_timetable, day_of_the_week, lesson_number, subject_name) FROM stdin;
+123     2       445     2020-01-08      1       Russian
+124     2       446     2020-01-09      2       Literature
+125     4       447     2020-01-10      3       Biology
+126     5       448     2020-01-11      4       Chemistry
+126     1       449     2020-01-12      5       Match
+124     3       500     2020-01-13      6       English
+\.
+
+
+--
+-- Name: Cabinet Cabinet_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Cabinet"
+    ADD CONSTRAINT "Cabinet_pkey" PRIMARY KEY (number_of_cabinet);
+
+
+--
+-- Name: Class Class_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Class"
+    ADD CONSTRAINT "Class_pkey" PRIMARY KEY (class_number);
+
+
+--
+-- Name: Journal Journal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Journal"
+    ADD CONSTRAINT "Journal_pkey" PRIMARY KEY (id_note);
+
+
+--
+-- Name: Lesson Lesson_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Lesson"
+    ADD CONSTRAINT "Lesson_pkey" PRIMARY KEY (id_lesson);
+
+
+--
+-- Name: Replacement Replacement_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Replacement"
+    ADD CONSTRAINT "Replacement_pkey" PRIMARY KEY (id_replacement);
+
+
+--
+-- Name: Student Student_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Student"
+    ADD CONSTRAINT "Student_pkey" PRIMARY KEY (id_student);
+
+
+--
+-- Name: Subject Subject_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Subject"
+    ADD CONSTRAINT "Subject_pkey" PRIMARY KEY (subject_name);
+
+
+--
+-- Name: Teacher Teacher_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Teacher"
+    ADD CONSTRAINT "Teacher_pkey" PRIMARY KEY (id_teacher);
+
+
+--
+-- Name: Timetable Timetable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Timetable"
+    ADD CONSTRAINT "Timetable_pkey" PRIMARY KEY (id_timetable);
+
+
+--
+-- Name: Student class_number; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Student"
+    ADD CONSTRAINT class_number FOREIGN KEY (class_number) REFERENCES public."Class"(class_number);
+
+
+--
+-- Name: Journal class_number; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Journal"
+    ADD CONSTRAINT class_number FOREIGN KEY (class_number) REFERENCES public."Class"(class_number);
+
+
+--
+-- Name: Lesson class_number; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Lesson"
+    ADD CONSTRAINT class_number FOREIGN KEY (class_number) REFERENCES public."Class"(class_number);
+
+
+--
+-- Name: Cabinet id_class; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Cabinet"
+    ADD CONSTRAINT id_class FOREIGN KEY (id_class) REFERENCES public."Class"(class_number);
+
+
+--
+-- Name: Lesson id_note; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Lesson"
+    ADD CONSTRAINT id_note FOREIGN KEY (id_note) REFERENCES public."Journal"(id_note);
+
+
+--
+-- Name: Lesson id_replacement; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Lesson"
+    ADD CONSTRAINT id_replacement FOREIGN KEY (id_replacement) REFERENCES public."Replacement"(id_replacement);
+
+
+--
+-- Name: Journal id_student; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Journal"
+    ADD CONSTRAINT id_student FOREIGN KEY (id_student) REFERENCES public."Student"(id_student);
+
+
+--
+-- Name: Class id_teacher; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Class"
+    ADD CONSTRAINT id_teacher FOREIGN KEY (id_teacher) REFERENCES public."Teacher"(id_teacher);
+
+
+--
+-- Name: Cabinet id_teacher; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Cabinet"
+    ADD CONSTRAINT id_teacher FOREIGN KEY (id_teacher) REFERENCES public."Teacher"(id_teacher);
+
+
+--
+-- Name: Student id_teacher; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Student"
+    ADD CONSTRAINT id_teacher FOREIGN KEY (id_teacher) REFERENCES public."Teacher"(id_teacher);
+
+
+--
+-- Name: Journal id_teacher; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Journal"
+    ADD CONSTRAINT id_teacher FOREIGN KEY (id_teacher) REFERENCES public."Teacher"(id_teacher);
+
+
+--
+-- Name: Subject id_teacher; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Subject"
+    ADD CONSTRAINT id_teacher FOREIGN KEY (id_teacher) REFERENCES public."Teacher"(id_teacher);
+
+
+--
+-- Name: Timetable id_teacher; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Timetable"
+    ADD CONSTRAINT id_teacher FOREIGN KEY (id_teacher) REFERENCES public."Teacher"(id_teacher);
+
+
+--
+-- Name: Lesson id_teacher; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Lesson"
+    ADD CONSTRAINT id_teacher FOREIGN KEY (id_teacher) REFERENCES public."Teacher"(id_teacher);
+
+
+--
+-- Name: Lesson id_timetable; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Lesson"
+    ADD CONSTRAINT id_timetable FOREIGN KEY (id_timetable) REFERENCES public."Timetable"(id_timetable);
+
+
+--
+-- Name: Timetable number_of_cabinet; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Timetable"
+    ADD CONSTRAINT number_of_cabinet FOREIGN KEY (number_of_cabinet) REFERENCES public."Cabinet"(number_of_cabinet);
+
+
+--
+-- Name: Lesson number_of_cabinet; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Lesson"
+    ADD CONSTRAINT number_of_cabinet FOREIGN KEY (number_of_cabinet) REFERENCES public."Cabinet"(number_of_cabinet);
+
+
+--
+-- Name: Replacement replacing_teacher; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Replacement"
+    ADD CONSTRAINT replacing_teacher FOREIGN KEY (replacing_teacher) REFERENCES public."Teacher"(id_teacher);
+
+
+--
+-- Name: Replacement sick_teacher; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Replacement"
+    ADD CONSTRAINT sick_teacher FOREIGN KEY (sick_teacher) REFERENCES public."Teacher"(id_teacher);
+
+
+--
+-- Name: Lesson subject_name; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Lesson"
+    ADD CONSTRAINT subject_name FOREIGN KEY (subject_name) REFERENCES public."Subject"(subject_name);
+
+
+--
+-- Name: Timetable subject_name; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Timetable"
+    ADD CONSTRAINT subject_name FOREIGN KEY (subject_name) REFERENCES public."Subject"(subject_name);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+
+C:\Program Files\PostgreSQL\11\bin>
