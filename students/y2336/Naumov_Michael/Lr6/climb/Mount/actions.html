@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Insert data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="../assets/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+</head>
+
+<body style="margin-left: 30px;">
+
+  <div class="container">
+    <h2>Редактирование таблицы Mount</h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <div class="zag_1">Введите страну</div>
+        <input name="country_mountain" class="pole_1" placeholder="exmp. = {A}">
+
+        <div class="zag_1">Введите место</div>
+        <input name="area_mountain" class="pole_1" placeholder="exmp. = {M}">
+
+        <div class="zag_1">Введите ID горы</div>
+        <input name="id_mountain" class="pole_1">
+
+        <div class="zag_1">Введите название горы</div>
+        <input name="name_mountain" class="pole_1" placeholder="exmp. = {">
+
+        <div class="zag_1">Действия:</div>
+        <div>
+          <button class="button2" name="action" value="add">add</button>
+          <button class="button2" name="action" value="delete">delete</button>
+          <button class="button2" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+
+</html>
