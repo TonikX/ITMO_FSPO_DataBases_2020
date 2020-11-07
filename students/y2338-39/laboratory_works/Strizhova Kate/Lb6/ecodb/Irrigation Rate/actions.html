@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Insert data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="../assets/style.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic-ext"
+    rel="stylesheet">
+  <style>
+    
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Редактирование таблицы Irrigation Rate</h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <div class="zag_1">Выберите сезон</div>
+        <select name="season" class="pole_1">
+          <option value="Зима">Зима</option>
+          <option value="Весна">Весна</option>
+          <option value="Лето">Лето</option>
+          <option value="Осень">Осень</option>
+        </select>
+
+        <div class="zag_1">Выберите вид растения</div>
+        <select name="plant_type_id" class="pole_1">
+          <option value="1">Моховидные</option>
+          <option value="2">Папоротники</option>
+          <option value="3">Водоросли</option>
+          <option value="4">Цветковые</option>
+          <option value="5">Хвойные</option>
+          <option value="6">Гнетовые</option>
+          <option value="76">Грибочки</option>
+        </select>
+        <div class="zag_1">Введите количество воды</div>
+        <input name="water_mm" class="pole_1">
+
+        <div class="zag_1">Действия:</div>
+        <div>
+          <button class="button2" name="action" value="add">add</button>
+          <button class="button2" name="action" value="delete">delete</button>
+          <button class="button2" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+
+</html>

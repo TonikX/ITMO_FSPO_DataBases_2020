@@ -1,0 +1,126 @@
+db.createCollection("irrigation_rate")
+
+db.irrigation_rate.insert({season: "Зима", plant_type_id: 1, water_mm: 35})
+
+db.irrigation_rate.insert({season: "Лето", plant_type_id: 1, water_mm: 35})
+
+db.irrigation_rate.insert({season: "Весна", plant_type_id: 1, water_mm: 45})
+
+db.irrigation_rate.insert({season: "Осень", plant_type_id: 1, water_mm: 45})
+
+db.irrigation_rate.insert({season: "Зима", plant_type_id: 2, water_mm: 100})
+
+db.irrigation_rate.insert({season: "Зима", plant_type_id: 3, water_mm: 150})
+
+db.irrigation_rate.insert({season: "Зима", plant_type_id: 4, water_mm: 170})
+
+db.irrigation_rate.insert({season: "Зима", plant_type_id: 5, water_mm: 140})
+
+db.irrigation_rate.insert({season: "Зима", plant_type_id: 6, water_mm: 170})
+
+db.irrigation_rate.insert({season: "Лето", plant_type_id: 2, water_mm: 150})
+
+db.irrigation_rate.insert({season: "Лето", plant_type_id: 3, water_mm: 170})
+
+db.irrigation_rate.insert({season: "Лето", plant_type_id: 4, water_mm: 200})
+
+db.irrigation_rate.insert({season: "Лето", plant_type_id: 5, water_mm: 500})
+
+db.irrigation_rate.insert({season: "Лето", plant_type_id: 6, water_mm: 300})
+
+db.irrigation_rate.insert({season: "Весна", plant_type_id: 2, water_mm: 270})
+
+db.irrigation_rate.insert({season: "Весна", plant_type_id: 3, water_mm: 170})
+
+db.irrigation_rate.insert({season: "Весна", plant_type_id: 4, water_mm: 110})
+
+db.irrigation_rate.insert({season: "Весна", plant_type_id: 5, water_mm: 500})
+
+db.irrigation_rate.insert({season: "Весна", plant_type_id: 6, water_mm: 160})
+
+db.irrigation_rate.insert({season: "Осень", plant_type_id: 2, water_mm: 280})
+
+db.irrigation_rate.insert({season: "Осень", plant_type_id: 3, water_mm: 410})
+
+db.irrigation_rate.insert({season: "Осень", plant_type_id: 4, water_mm: 210})
+
+db.irrigation_rate.insert({season: "Осень", plant_type_id: 5, water_mm: 310})
+
+db.irrigation_rate.insert({season: "Осень", plant_type_id: 6, water_mm: 220})
+
+
+
+
+db.object.insert({id_object: 1, object_adress: "г. Санкт-Петербург, ул. Большая Морская, д. 17", object_name: "ООО Лесопарк"})
+db.object.insert({id_object: 2, object_adress: "г. Санкт-Петербург, ул. Победы, д. 55", object_name: "ООО Технострой-СПБ"})
+db.object.insert({id_object: 3, object_adress: "г. Санкт-Петербург, ул. Собаки Павлова, д. 5", object_name: "ООО ЦВЕТЫ-ДЛЯ-ДОМА"})
+db.object.insert({id_object: 4, object_adress: "г. Санкт-Петербург, пр. Стаховского, д. 25", object_name: "ООО Пятерочка"})
+db.object.insert({id_object: 5, object_adress: "г. Москва, ул. мирных, д. 10", object_name: "ООО Эпл"})
+db.object.insert({id_object: 6, object_adress: "г. Москва, ул. горная, д. 19", object_name: "ООО Шаоми"})
+db.object.insert({id_object: 7, object_adress: "г. Москва, пр. Лесова, д. 107", object_name: "ИП Г. А. Стахоновская"})
+db.object.insert({id_object: 8, object_adress: "г. Москва, пер. Лапенко, д. 8", object_name: "ИП Е. И. Иванова"})
+
+
+
+db.plant.insert({id_plant: 2, zone_id: 1, plant_type_id: 3, date_of_planting: new Date('2020-10-01'), name: "Красные водоросли"})
+db.plant.insert({id_plant: 3, zone_id: 2, plant_type_id: 3, date_of_planting: new Date('2020-11-01'), name: "Харовые водоросли"})
+db.plant.insert({id_plant: 6, zone_id: 5, plant_type_id: 1, date_of_planting: new Date('2020-12-01'), name: "Мох Пеллия"})
+db.plant.insert({id_plant: 7, zone_id: 6, plant_type_id: 1, date_of_planting: new Date('2019-09-18'), name: "Гипнум кипарисовый"})
+db.plant.insert({id_plant: 13, zone_id: 12, plant_type_id: 2, date_of_planting: new Date('2019-09-18'), name: "Асплениум"})
+db.plant.insert({id_plant: 14, zone_id: 13, plant_type_id: 2, date_of_planting: new Date('2019-08-21'), name: "Вудвардия"})
+db.plant.insert({id_plant: 19, zone_id: 18, plant_type_id: 4, date_of_planting: new Date('2020-08-21'), name: "Спирейные"})
+db.plant.insert({id_plant: 20, zone_id: 19, plant_type_id: 4, date_of_planting: new Date('2020-12-01'), name: "Волжанка"})
+db.plant.insert({id_plant: 28, zone_id: 7, plant_type_id: 5, date_of_planting: new Date('2020-02-28'), name: "Ель сербская"})
+db.plant.insert({id_plant: 31, zone_id: 10, plant_type_id: 5, date_of_planting: new Date('2020-12-01'), name: "Сосна обыкновенная"})
+db.plant.insert({id_plant: 37, zone_id: 16, plant_type_id: 6, date_of_planting: new Date('2020-12-01'), name: "Вильвичия"})
+db.plant.insert({id_plant: 39, zone_id: 18, plant_type_id: 6, date_of_planting: new Date('2020-10-01'), name: "Хвойник"})
+
+
+db.plant_type.insert({plant_id: 1, plant_name: "Моховидные", property: "В природе: Участвуют в создании особых биоценозов, особенно там, где почти сплошь покрывают почву (тундра)."})
+db.plant_type.insert({plant_id: 2, plant_name: "Папоротники", property: "Пищевое применение имеют такие виды, как Орляк обыкновенный (Pteridium aquilinum), Страусник обыкновенный (Matteuccia struthiopteris), Осмунда коричная (Osmunda cinnamomea) и другие."})
+db.plant_type.insert({plant_id: 3, plant_name: "Водоросли", property: "Многие водоросли — важный компонент процесса биологической очистки сточных вод."})
+db.plant_type.insert({plant_id: 4, plant_name: "Цветковые", property: "Цветковые растения обычно рассматриваются как отдел. Так как эта систематическая категория более высокого ранга, чем семейство, есть определённая свобода в выборе названия. "})
+db.plant_type.insert({plant_id: 5, plant_name: "Хвойные", property: "В настоящее время в классе хвойных рассматриваются от 6 до 8 семейств с общим количеством родов 65—70 и 600—650 видов."})
+db.plant_type.insert({plant_id: 6, plant_name: "Гнетовые", property: "Вельвича назвал Вельвичией, находится в близком родстве с растениями родов гнетум и эфедра, относящихся к голосеменным."})
+
+
+
+db.zone.insert({zone_id: 1, zone_type: "Ландшафт", object_id: 1})
+
+db.zone.insert({zone_id: 2, zone_type: "Ландшафт", object_id: 3})
+
+db.zone.insert({zone_id: 3, zone_type: "Ландшафт", object_id: 4})
+
+db.zone.insert({zone_id: 4, zone_type: "Ландшафт", object_id: 7})
+
+db.zone.insert({zone_id: 5, zone_type: "Парк", object_id: 1})
+
+db.zone.insert({zone_id: 6, zone_type: "Парк", object_id: 2})
+
+db.zone.insert({zone_id: 7, zone_type: "Парк", object_id: 6})
+
+db.zone.insert({zone_id: 8, zone_type: "Улица", object_id: 2})
+
+db.zone.insert({zone_id: 9, zone_type: "Улица", object_id: 5})
+
+db.zone.insert({zone_id: 10, zone_type: "Улица", object_id: 4})
+
+db.zone.insert({zone_id: 11, zone_type: "Сквер", object_id: 2})
+
+db.zone.insert({zone_id: 12, zone_type: "Сквер", object_id: 5})
+
+db.zone.insert({zone_id: 13, zone_type: "Улица", object_id: 6})
+
+db.zone.insert({zone_id: 14, zone_type: "Улица", object_id: 7})
+
+db.zone.insert({zone_id: 15, zone_type: "Сквер", object_id: 3})
+
+db.zone.insert({zone_id: 16, zone_type: "Сквер", object_id: 7})
+
+db.zone.insert({zone_id: 17, zone_type: "Ландшафт", object_id: 8})
+
+db.zone.insert({zone_id: 18, zone_type: "Улица", object_id: 8})
+
+db.zone.insert({zone_id: 19, zone_type: "Сквер", object_id: 8})
+
+db.zone.insert({zone_id: 20, zone_type: "Парк", object_id: 8})
