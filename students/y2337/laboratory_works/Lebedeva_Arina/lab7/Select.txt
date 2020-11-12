@@ -1,0 +1,19 @@
+> db.lesson.find({room: 23, date: new ISODate("2020-09-01T05:30:00Z")}, {_id: 0, room: 0, date: 0})
+{ "subject" : "Math", "id_techer" : 1, "id_lesson" : 1 }
+
+> db.subject.find({level: "pro"}).count()
+2
+> db.subject.find({level: "base"}).count()
+1
+
+> db.student.find({class: "11A"},{_id: 0, class: 0, id_student: 0, gender: 0})
+{ "FIO" : "Lebedeva" }
+{ "FIO" : "Golenko" }
+{ "FIO" : "Petrov" }
+
+> db.journal.aggregate({$match: {"id_student": 3, "subject": "Math"}},{$group:{_id: "$id_student", "mark": {$avg:"$mark"}}})
+{ "_id" : 3, "mark" : 3 }
+
+> db.teacher.find({class:/^11/}, {_id:0})
+{ "id_teacher" : 1, "FIO" : "Ivanova", "subject" : "Math", "class" : "11A", "id_subject" : 1 }
+{ "id_teacher" : 2, "FIO" : "Popov", "subject" : "Math", "class" : "11B", "id_subject" : 2 }
