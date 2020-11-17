@@ -1,0 +1,664 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.4
+-- Dumped by pg_dump version 12.4
+
+-- Started on 2020-11-17 15:44:29
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 547 (class 1247 OID 16395)
+-- Name: season; Type: TYPE; Schema: public; Owner: postgres
+--
+
+CREATE TYPE public.season AS ENUM (
+    'Зима',
+    'Весна',
+    'Лето',
+    'Осень'
+);
+
+
+ALTER TYPE public.season OWNER TO postgres;
+
+--
+-- TOC entry 550 (class 1247 OID 16404)
+-- Name: zone_type; Type: TYPE; Schema: public; Owner: postgres
+--
+
+CREATE TYPE public.zone_type AS ENUM (
+    'Ландшафт',
+    'Парк',
+    'Улица',
+    'Сквер'
+);
+
+
+ALTER TYPE public.zone_type OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 212 (class 1259 OID 24681)
+-- Name: decorators; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.decorators (
+    id integer NOT NULL,
+    name "char",
+    number integer,
+    adress "char"
+);
+
+
+ALTER TABLE public.decorators OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 24706)
+-- Name: decorators_object; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.decorators_object (
+    id integer NOT NULL,
+    id_object integer,
+    id_decorators integer
+);
+
+
+ALTER TABLE public.decorators_object OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 16413)
+-- Name: irrigation_rate; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.irrigation_rate (
+    season public.season NOT NULL,
+    plant_type_id integer NOT NULL,
+    water_mm integer NOT NULL
+);
+
+
+ALTER TABLE public.irrigation_rate OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 24671)
+-- Name: liters; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.liters (
+    sezon "char",
+    liters integer,
+    id_plant_type integer NOT NULL
+);
+
+
+ALTER TABLE public.liters OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 16416)
+-- Name: object; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.object (
+    id integer NOT NULL,
+    address text NOT NULL,
+    name text NOT NULL
+);
+
+
+ALTER TABLE public.object OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 16422)
+-- Name: object_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.object_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.object_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2900 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: object_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.object_id_seq OWNED BY public.object.id;
+
+
+--
+-- TOC entry 205 (class 1259 OID 16424)
+-- Name: plant; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.plant (
+    id integer NOT NULL,
+    zone_id integer NOT NULL,
+    plant_type_id integer NOT NULL,
+    date_of_planting date NOT NULL,
+    name text NOT NULL
+);
+
+
+ALTER TABLE public.plant OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 16430)
+-- Name: plant_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.plant_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.plant_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2901 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: plant_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.plant_id_seq OWNED BY public.plant.id;
+
+
+--
+-- TOC entry 207 (class 1259 OID 16432)
+-- Name: plant_type; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.plant_type (
+    id integer NOT NULL,
+    name text NOT NULL,
+    property text NOT NULL
+);
+
+
+ALTER TABLE public.plant_type OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 16438)
+-- Name: plant_type_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.plant_type_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.plant_type_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2902 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: plant_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.plant_type_id_seq OWNED BY public.plant_type.id;
+
+
+--
+-- TOC entry 209 (class 1259 OID 16440)
+-- Name: zone; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.zone (
+    id integer NOT NULL,
+    type public.zone_type NOT NULL,
+    object_id integer NOT NULL
+);
+
+
+ALTER TABLE public.zone OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 16443)
+-- Name: zone_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.zone_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.zone_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2903 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: zone_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.zone_id_seq OWNED BY public.zone.id;
+
+
+--
+-- TOC entry 2730 (class 2604 OID 16445)
+-- Name: object id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.object ALTER COLUMN id SET DEFAULT nextval('public.object_id_seq'::regclass);
+
+
+--
+-- TOC entry 2731 (class 2604 OID 16446)
+-- Name: plant id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.plant ALTER COLUMN id SET DEFAULT nextval('public.plant_id_seq'::regclass);
+
+
+--
+-- TOC entry 2732 (class 2604 OID 16447)
+-- Name: plant_type id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.plant_type ALTER COLUMN id SET DEFAULT nextval('public.plant_type_id_seq'::regclass);
+
+
+--
+-- TOC entry 2733 (class 2604 OID 16448)
+-- Name: zone id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.zone ALTER COLUMN id SET DEFAULT nextval('public.zone_id_seq'::regclass);
+
+
+--
+-- TOC entry 2893 (class 0 OID 24681)
+-- Dependencies: 212
+-- Data for Name: decorators; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.decorators (id, name, number, adress) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2894 (class 0 OID 24706)
+-- Dependencies: 213
+-- Data for Name: decorators_object; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.decorators_object (id, id_object, id_decorators) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2883 (class 0 OID 16413)
+-- Dependencies: 202
+-- Data for Name: irrigation_rate; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.irrigation_rate (season, plant_type_id, water_mm) FROM stdin;
+Зима	1	35
+Лето	1	55
+Весна	1	45
+Осень	1	45
+Зима	2	100
+Зима	3	150
+Зима	4	170
+Зима	5	140
+Зима	6	170
+Лето	2	150
+Лето	3	170
+Лето	4	200
+Лето	5	500
+Лето	6	300
+Весна	2	275
+Весна	3	170
+Весна	4	110
+Весна	5	500
+Весна	6	160
+Осень	2	280
+Осень	3	410
+Осень	4	310
+Осень	5	310
+Осень	6	220
+\.
+
+
+--
+-- TOC entry 2892 (class 0 OID 24671)
+-- Dependencies: 211
+-- Data for Name: liters; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.liters (sezon, liters, id_plant_type) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2884 (class 0 OID 16416)
+-- Dependencies: 203
+-- Data for Name: object; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.object (id, address, name) FROM stdin;
+1	г. Санкт-Петербург, ул. Большая Морская, д. 17	ООО "Лесопарк"
+2	г. Санкт-Петербург, ул. Победы, д. 55	ООО "Технострой-СПБ"
+3	г. Санкт-Петербург, ул. Собаки Павлова, д. 5	ООО "ЦВЕТЫ-ДЛЯ-ДОМА"
+4	г. Санкт-Петербург, пр. Стаховского, д. 25	ООО "Пятерочка"
+5	г. Москва, ул. мирных, д. 10	ООО "Эпл"
+6	г. Москва, ул. горная, д. 19	ООО "Шаоми"
+7	г. Москва, пр. Лесова, д. 107	ИП "Г. А. Стахоновская"
+8	г. Москва, пер. Лапенко, д. 8	ИП "Е. И. Иванова"
+\.
+
+
+--
+-- TOC entry 2886 (class 0 OID 16424)
+-- Dependencies: 205
+-- Data for Name: plant; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.plant (id, zone_id, plant_type_id, date_of_planting, name) FROM stdin;
+3	2	3	2020-11-01	Харовые водоросли
+4	3	3	2020-01-01	Зеленые водоросли
+5	4	3	2020-06-01	Глаукофиты
+6	5	1	2020-12-01	Мох Пеллия
+7	6	1	2019-09-18	Гипнум кипарисовый
+8	7	1	2020-02-28	Тортулу стенную
+9	8	1	2020-08-21	Политрихум можжевельникоподобный
+10	9	1	2020-10-01	Циррифиллум волосконосный
+11	10	1	2020-12-01	Хилокомиум блестящий
+12	11	2	2020-02-28	Адиантум
+13	12	2	2019-09-18	Асплениум
+14	13	2	2020-08-21	Вудвардия
+15	14	2	2020-12-01	Вудсия
+16	15	2	2020-10-01	Скребница
+17	16	2	2019-09-18	Пузырник
+18	17	2	2020-02-28	Орляк
+19	18	4	2020-08-21	Спирейные
+20	19	4	2020-12-01	Волжанка
+21	20	4	2019-09-18	Пузыреплодник
+23	2	4	2020-02-28	Квиллайа
+24	3	4	2020-10-01	Спирея
+25	4	4	2020-08-21	Роза
+26	5	4	2020-12-01	Земляника
+27	6	4	2020-10-01	Лапчатка
+28	7	5	2020-02-28	Ель сербская
+29	8	5	2019-09-18	Ель сибирская
+30	9	5	2020-08-21	Ель европейская
+31	10	5	2020-12-01	Сосна обыкновенная
+32	11	5	2020-10-07	Сосна горная
+33	12	5	2020-02-28	Сосна желтая
+34	13	5	2000-04-04	Сосна Веймутова
+35	14	5	2019-09-18	Пихта бальзамическая
+36	15	6	2019-10-03	Эфедра (китайская)
+37	16	6	2020-12-01	Вильвичия
+38	17	6	2020-08-21	Гнетума Гнемона
+39	18	6	2020-10-01	Хвойник
+40	19	2	2020-02-28	Вудвардия
+41	20	2	2019-09-18	Орляк
+42	2	5	2020-10-01	Ель европейская
+43	4	5	2020-10-01	Ель европейская
+44	6	5	2020-10-01	Ель европейская
+45	8	5	2020-10-01	Ель европейская
+46	10	5	2020-10-01	Ель европейская
+47	12	5	2020-10-01	Ель европейская
+48	14	5	2020-10-01	Ель европейская
+49	16	5	2020-10-01	Ель европейская
+50	18	5	2020-10-01	Ель европейская
+51	20	5	2020-10-01	Ель европейская
+\.
+
+
+--
+-- TOC entry 2888 (class 0 OID 16432)
+-- Dependencies: 207
+-- Data for Name: plant_type; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.plant_type (id, name, property) FROM stdin;
+1	Моховидные	В природе:\nУчаствуют в создании особых биоценозов, особенно там, где почти сплошь покрывают почву (тундра).\nМоховой покров способен накапливать и удерживать радиоактивные вещества.\nИграют большую роль в регулировании водного баланса ландшафтов, так как способны впитывать и удерживать большое количество воды.
+2	Папоротники	Пищевое применение имеют такие виды, как Орляк обыкновенный (Pteridium aquilinum), Страусник обыкновенный (Matteuccia struthiopteris), Осмунда коричная (Osmunda cinnamomea) и другие.\nНекоторые виды ядовиты. Наиболее токсичными из произрастающих в России папоротников являются представители рода Щитовник (Dryopteris), корневища которого содержат производные флороглюцина[9]. Экстракты из щитовника обладают антигельминтным действием и используются в медицине. Ядовитыми являются и некоторые представители родов Кочедыжник (Athyrium) и Страусник (Matteuccia).
+3	Водоросли	Многие водоросли — важный компонент процесса биологической очистки сточных вод.\nБурное развитие нитчатых и планктонных водорослей (цветение воды) может создавать проблемы в работе очистных сооружений, систем водоснабжения.
+4	Цветковые	Цветковые растения обычно рассматриваются как отдел. Так как эта систематическая категория более высокого ранга, чем семейство, есть определённая свобода в выборе названия. Статья 16 Международного кодекса ботанической номенклатуры позволяет использовать как и традиционные исторические названия, так и название, образованное от рода. Официальное униноминальное название этого таксона — Magnoliophyta, от названия рода Magnolia. Но традиционно укоренились такие имена, как Angiospermae и Anthophyta (цветковые растения).
+5	Хвойные	В настоящее время в классе хвойных рассматриваются от 6 до 8 семейств с общим количеством родов 65—70 и 600—650 видов. Семь наиболее различающихся семейств связаны в таблице вверху справа. В других интерпретациях головчатотисовые (Cephalotaxaceae) могут быть включены в состав тисовых (Taxaceae), а в некоторых работах дополнительно выделяют Phyllocladaceae как отличающееся от подокарповых семейство. Семейство Таксодиевые (Taxodiaceae) здесь включено в семейство Кипарисовые (Cupressaceae), хотя продолжает часто встречаться во многих источниках как отдельное семейство.
+6	Гнетовые	В 1863 году была опубликована работа английского ботаника Джозефа Хукера (Гукера), в которой он подробно описывал растение, привезённое в 1860 году с юга Анголы австрийским ботаником и путешественником словенского происхождения Фридрихом Вельвичем. Хукер делал вывод, что это растение, которое он в честь Вельвича назвал Вельвичией, находится в близком родстве с растениями родов гнетум и эфедра, относящихся к голосеменным. Сначала эти растения были объединены в единое семейство гнетовых, но более поздние исследования выявили между этими тремя родами достаточно существенные различия, а потому каждый из родов был выделен в отдельное семейство, а затем и в отдельный порядок.
+\.
+
+
+--
+-- TOC entry 2890 (class 0 OID 16440)
+-- Dependencies: 209
+-- Data for Name: zone; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.zone (id, type, object_id) FROM stdin;
+2	Ландшафт	3
+3	Ландшафт	4
+4	Ландшафт	7
+5	Парк	1
+6	Парк	2
+7	Парк	6
+8	Улица	2
+9	Улица	5
+10	Улица	4
+11	Сквер	2
+12	Сквер	5
+13	Улица	6
+14	Улица	7
+15	Сквер	3
+16	Сквер	7
+17	Ландшафт	8
+18	Сквер	8
+19	Парк	8
+20	Улица	8
+21	Сквер	3
+\.
+
+
+--
+-- TOC entry 2904 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: object_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.object_id_seq', 8, true);
+
+
+--
+-- TOC entry 2905 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: plant_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.plant_id_seq', 51, true);
+
+
+--
+-- TOC entry 2906 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: plant_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.plant_type_id_seq', 6, true);
+
+
+--
+-- TOC entry 2907 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: zone_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.zone_id_seq', 20, true);
+
+
+--
+-- TOC entry 2749 (class 2606 OID 24710)
+-- Name: decorators_object decorators_object_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.decorators_object
+    ADD CONSTRAINT decorators_object_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2747 (class 2606 OID 24685)
+-- Name: decorators decorators_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.decorators
+    ADD CONSTRAINT decorators_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2735 (class 2606 OID 16450)
+-- Name: irrigation_rate irrigation_rate_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.irrigation_rate
+    ADD CONSTRAINT irrigation_rate_pkey PRIMARY KEY (season, plant_type_id);
+
+
+--
+-- TOC entry 2745 (class 2606 OID 24675)
+-- Name: liters liters_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.liters
+    ADD CONSTRAINT liters_pkey PRIMARY KEY (id_plant_type);
+
+
+--
+-- TOC entry 2737 (class 2606 OID 16452)
+-- Name: object object_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.object
+    ADD CONSTRAINT object_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2739 (class 2606 OID 16454)
+-- Name: plant plant_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.plant
+    ADD CONSTRAINT plant_pkey PRIMARY KEY (id, zone_id);
+
+
+--
+-- TOC entry 2741 (class 2606 OID 16456)
+-- Name: plant_type plant_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.plant_type
+    ADD CONSTRAINT plant_type_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2743 (class 2606 OID 16458)
+-- Name: zone zone_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.zone
+    ADD CONSTRAINT zone_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2750 (class 2606 OID 16459)
+-- Name: irrigation_rate fk_irrigation_plant_type; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.irrigation_rate
+    ADD CONSTRAINT fk_irrigation_plant_type FOREIGN KEY (plant_type_id) REFERENCES public.plant_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2751 (class 2606 OID 16464)
+-- Name: plant fk_plant_plant_type; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.plant
+    ADD CONSTRAINT fk_plant_plant_type FOREIGN KEY (plant_type_id) REFERENCES public.plant_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2752 (class 2606 OID 16469)
+-- Name: plant fk_plant_zone; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.plant
+    ADD CONSTRAINT fk_plant_zone FOREIGN KEY (zone_id) REFERENCES public.zone(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2753 (class 2606 OID 16474)
+-- Name: zone fk_zone_object; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.zone
+    ADD CONSTRAINT fk_zone_object FOREIGN KEY (object_id) REFERENCES public.object(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2756 (class 2606 OID 24716)
+-- Name: decorators_object id_decorators; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.decorators_object
+    ADD CONSTRAINT id_decorators FOREIGN KEY (id_decorators) REFERENCES public.decorators(id) NOT VALID;
+
+
+--
+-- TOC entry 2755 (class 2606 OID 24711)
+-- Name: decorators_object id_object; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.decorators_object
+    ADD CONSTRAINT id_object FOREIGN KEY (id_object) REFERENCES public.object(id);
+
+
+--
+-- TOC entry 2754 (class 2606 OID 24676)
+-- Name: liters id_plant_type; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.liters
+    ADD CONSTRAINT id_plant_type FOREIGN KEY (id_plant_type) REFERENCES public.plant_type(id) NOT VALID;
+
+
+-- Completed on 2020-11-17 15:44:29
+
+--
+-- PostgreSQL database dump complete
+--
+
