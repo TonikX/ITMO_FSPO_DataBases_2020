@@ -1,0 +1,64 @@
+ db.createCollection("teacher")
+{ "ok" : 1 }
+> show collections
+teacher
+> db.teacher.insert({id_teacher: 1, FIO: 'Ivanova', subject: 'Math',class: '11A', id_subject: 1})
+WriteResult({ "nInserted" : 1 })
+> db.teacher.insert({id_teacher: 2, FIO: 'Popov', subject: 'Math',class: '11B', id_subject: 2})
+WriteResult({ "nInserted" : 1 })
+> db.teacher.insert({id_teacher: 3, FIO: 'Matasova', subject: 'IT',class: 'no', id_subject: 3})
+WriteResult({ "nInserted" : 1 })
+> db.createCollection("subject")
+{ "ok" : 1 }
+> db.subject.insert({id_subject: 1, subject: 'Math', level: 'pro'})
+WriteResult({ "nInserted" : 1 })
+> db.subject.insert({id_subject: 2, subject: 'Math', level: 'base'})
+WriteResult({ "nInserted" : 1 })
+> db.subject.insert({id_subject: 3, subject: 'IT', level: 'pro'})
+WriteResult({ "nInserted" : 1 })
+> db.createCollection("student")
+{ "ok" : 1 }
+> db.student.insert({id_student: 1, FIO: 'Lebedeva', class: '11A', gender: 'F'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({id_student: 2, FIO: 'Golenko', class: '11A', gender: 'M'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({id_student: 3, FIO: 'Petrov', class: '11A', gender: 'M'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({id_student: 4, FIO: 'Fedotov', class: '11B', gender: 'M'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({id_student: 5, FIO: 'Anosova', class: '11B', gender: 'F'})
+WriteResult({ "nInserted" : 1 })
+> db.createCollection("lesson")
+{ "ok" : 1 }
+> db.lesson.insert({subject: 'Math', id_techer: 1, room: 23,id_lesson: 1, date: new Date(2020-09-01), number: 1})
+WriteResult({ "nInserted" : 1 })
+> db.lesson.insert({subject: 'Math', id_techer: 2, room: 25,id_lesson: 2, date: new Date(2020-09-01), number: 1})
+WriteResult({ "nInserted" : 1 })
+> db.lesson.insert({subject: 'IT', id_techer: 3, room: 25,id_lesson: 3, date: new Date(2020-09-01), number: 2})
+WriteResult({ "nInserted" : 1 })
+> db.createCollection("class")
+{ "ok" : 1 }
+> db.class.insert({class: '11A', class_techer: 1, journal: '11A'})
+WriteResult({ "nInserted" : 1 })
+> db.class.insert({class: '11B', class_techer: 2, journal: '11B'})
+WriteResult({ "nInserted" : 1 })
+> db.createCollection("room")
+{ "ok" : 1 }
+> db.room.insert({room: 23,  capacity: 15})
+WriteResult({ "nInserted" : 1 })
+> db.room.insert({room: 25,  capacity: 15})
+WriteResult({ "nInserted" : 1 })
+> db.createCollection("journal")
+{ "ok" : 1 }
+> db.journal.insert({id_teacher: 1, class: '11A', subject: 'Math', id_student: 3, mark:4, id_lesson: 1})
+WriteResult({ "nInserted" : 1 })
+> db.journal.insert({id_teacher: 1, class: '11A', subject: 'Math', id_student: 3, mark:2, id_lesson: 1})
+WriteResult({ "nInserted" : 1 })
+> show collections
+class
+journal
+lesson
+room
+student
+subject
+teacher
