@@ -16,6 +16,7 @@
 
 > db.teacher.find({class:/^11/}, {_id:0})
 { "id_teacher" : 1, "FIO" : "Ivanova", "subject" : "Math", "class" : "11A", "id_subject" : 1 }
+{ "id_teacher" : 2, "FIO" : "Popov", "subject" : "Math", "class" : "11B", "id_subject" : 2 }
 
 > db.teacher.aggregate([{$lookup: {from: "subject", localField: "id_subject", foreignField: "id_subject", as: "subject"}}, {$project:{_id:0}}])
 { "id_teacher" : 1, "FIO" : "Ivanova", "subject" : [ { "_id" : ObjectId("5fad64202c397c8d6006c479"), "id_subject" : 1, "subject" : "Math", "level" : "pro" } ], "class" : "11A", "id_subject" : 1 }
