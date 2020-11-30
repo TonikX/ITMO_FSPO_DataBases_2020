@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Insert data to PostgreSQL with php</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .body {
+      margin: 0;
+      padding: 0;
+      color: #383d48;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .container {
+      margin: 50px auto;
+      padding: 0 20px;
+      width: 100%;
+      max-width: 768px;
+      text-align: center;
+    }
+
+    .container ul {
+      margin: 50px 0;
+      list-style: none;
+    }
+
+    h1,
+    h2 {
+      font-weight: 500;
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .zag_1 {
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .pole_1 {
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 270px;
+      height: 30px;
+      border: 1;
+      border-radius: 5px;
+    }
+    select{
+      width: 170px;
+      height: 30px;
+    }
+  </style>
+</head>
+
+<body style=" color: #383d48; font-family: 'Montserrat', sans-serif;">
+  <div class="container">
+    <h2 style="margin-left: 38px; text-align: center;">Таблица Bidding</h2>
+    <ul>
+      <form name="action" action="action.php" method="POST">
+        <div class="zag_1">Введите ID торгов</div>
+        <input name="ID_Bidding" class="pole_1" type="number">
+
+        <div class="zag_1">Введите дату торгов</div>
+        <input type="date" name="Date_Bidding" class="pole_1">
+
+        <div class="zag_1">Помощь менеджера</div>
+        <select name="Manager_Response" class="pole_1">
+          <option selected value='Yes'>Yes</option>
+          <option value='No'>No</option>
+        </select>
+
+        <div class="zag_1" style="margin-top: 25px;">Действия</div>
+        <div style="margin-top: 10px;" class="example-1">
+          <button class="button-1" name="action" value="add">add</button>
+          <button class="button-1" name="action" value="delete">delete</button>
+          <button class="button-1" name="action" value="edit">edit</button>
+        </div>
+      </form>
+    </ul>
+
+</body>
+
+</html>
